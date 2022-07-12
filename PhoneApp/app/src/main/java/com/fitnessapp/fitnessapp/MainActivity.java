@@ -16,15 +16,7 @@ public class MainActivity extends AppCompatActivity {
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
         setContentView(R.layout.activity_main);
-    }
-
-    public void openSettings(View view) {
-        Intent activity = new Intent(this, SettingsActivity.class);
-        startActivity(activity);
-    }
-
-    public void openIntervalTimer(View view){
-        Intent activity = new Intent(this, IntervalTimerActivity.class);
+        Intent activity = new Intent(this, Timer.class);
         startActivity(activity);
     }
 }

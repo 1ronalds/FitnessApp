@@ -24,15 +24,13 @@ public class IntervalTimerActionActivity extends AppCompatActivity {
         int restSec = intent.getIntExtra(IntervalTimerActivity.EXTRA_SECONDS_R, 0);
         int sets = intent.getIntExtra(IntervalTimerActivity.EXTRA_SETS, 0);
         TextView tw = (TextView) findViewById(R.id.textView);
-        String workTime = Integer.toString(sets);
+        String workTime = Integer.toString(workMin)  + ":" + Integer.toString(workSec);
         tw.setText(workTime);
         TextView tw2 = (TextView) findViewById(R.id.textView3);
         tw2.setText("Rest");
     }
 
-    public void setTime(View view){
 
-    }
 
     public void openExercises(View view) {
         Intent activity = new Intent(this, Exercises.class);

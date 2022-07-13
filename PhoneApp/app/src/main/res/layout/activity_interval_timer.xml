@@ -7,74 +7,92 @@
     tools:context=".IntervalTimerActivity">
 
     <LinearLayout
-        android:id="@+id/linearLayout2"
-        android:layout_width="409dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginTop="32dp"
-        android:layout_marginEnd="32dp"
-        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:orientation="vertical"
+        android:gravity="center"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <android.widget.Button
-            android:id="@+id/timerBtn"
-            style="@style/Widget.MaterialComponents.Button.TextButton"
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <LinearLayout
+            android:id="@+id/linearLayout2"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Timer"
-            android:textColor="@color/black" />
+            android:gravity="center"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
 
-        <Button
-            android:id="@+id/intervalTimerBtn"
-            style="@style/Widget.MaterialComponents.Button.TextButton"
-            android:layout_width="156dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:text="Interval timer"
-            android:textColor="@color/black" />
+            <android.widget.Button
+                android:id="@+id/timerBtn"
+                style="@style/Widget.MaterialComponents.Button.TextButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:onClick="openTimer"
+                android:text="Timer"
+                android:textColor="@color/black"
+                android:textSize="12dp" />
 
-        <Button
-            android:id="@+id/exercisesBtn"
-            style="@style/Widget.MaterialComponents.Button.TextButton"
-            android:layout_width="112dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="Exercises"
-            android:textColor="@color/black" />
+            <Button
+                android:id="@+id/intervalTimerBtn"
+                style="@style/Widget.MaterialComponents.Button.TextButton"
+                android:layout_width="156dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:onClick="openIntervalTimer"
+                android:text="Interval timer"
+                android:textStyle="bold"
+                android:textColor="@color/black"
+                android:textSize="12dp" />
 
-        <ImageButton
-            android:id="@+id/settingsButton"
-            android:layout_width="48dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:backgroundTint="@color/white"
-            app:srcCompat="@drawable/ic_settings" />
+            <Button
+                android:id="@+id/exercisesBtn"
+                style="@style/Widget.MaterialComponents.Button.TextButton"
+                android:layout_width="112dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:onClick="openExercises"
+                android:text="Exercises"
+                android:textColor="@color/black"
+                android:textSize="12dp" />
 
-    </LinearLayout>
+            <ImageButton
+                android:id="@+id/settingsButton"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_weight="1"
+                android:backgroundTint="@color/white"
+                android:onClick="openSettings"
+                app:srcCompat="@drawable/ic_settings" />
 
-    <Space
-        android:id="@+id/space"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginStart="32dp"
-        android:layout_marginEnd="32dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
+        </LinearLayout>
 
-    <LinearLayout
-        android:layout_width="409dp"
-        android:layout_height="649dp"
-        android:layout_marginStart="1dp"
-        android:layout_marginTop="1dp"
-        android:layout_marginEnd="1dp"
-        android:orientation="vertical"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout2">
+        <Space
+            android:id="@+id/space"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="32dp"
+            android:layout_marginEnd="32dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
 
         <Space
             android:layout_width="match_parent"
@@ -250,6 +268,6 @@
         </LinearLayout>
 
     </LinearLayout>
-
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

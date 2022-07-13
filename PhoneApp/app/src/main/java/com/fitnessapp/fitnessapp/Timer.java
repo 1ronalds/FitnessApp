@@ -12,7 +12,8 @@ public class Timer extends AppCompatActivity {
 
     public static final String EXTRA_SECONDS = "com.fitnessapp.fitnessapp.EXTRA_SECONDS";
     public static final String EXTRA_MINUTES = "com.fitnessapp.fitnessapp.EXTRA_MINUTES";
-
+    int seconds = 0;
+    int minutes = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,14 +42,15 @@ public class Timer extends AppCompatActivity {
         startActivity(activity);
     }
     public void openTimerStarted(View view) {
-        Intent activity = new Intent(this, TimerStarted.class);
-        activity.putExtra(EXTRA_MINUTES, minutes);
-        activity.putExtra(EXTRA_SECONDS, seconds);
-        startActivity(activity);
+        if(seconds > 0 || minutes > 0 ) {
+            Intent activity = new Intent(this, TimerStarted.class);
+            activity.putExtra(EXTRA_MINUTES, minutes);
+            activity.putExtra(EXTRA_SECONDS, seconds);
+            startActivity(activity);
+        }
     }
 
-    int seconds = 0;
-    int minutes = 0;
+
     public void addTime(View view){
         String time = "";
         String sSeconds = "";

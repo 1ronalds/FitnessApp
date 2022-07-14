@@ -134,7 +134,7 @@ public class IntervalTimerActivity extends AppCompatActivity {
     }
 
     public void runIntervalTimer(View view){
-        Intent activity = new Intent(this, IntervalTimerActionActivity.class);
+        Intent activity = new Intent(this, IntervalTimerActivity.class);
         startActivity(activity);
     }
 

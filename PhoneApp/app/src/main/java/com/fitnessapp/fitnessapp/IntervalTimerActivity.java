@@ -1,19 +1,20 @@
 package com.fitnessapp.fitnessapp;
 
+import static java.lang.Integer.valueOf;
+
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
 
+import org.w3c.dom.Text;
+
 public class IntervalTimerActivity extends AppCompatActivity {
-    public static final String EXTRA_SECONDS_W = "com.fitnessapp.fitnessapp.EXTRA_SECONDS_W";
-    public static final String EXTRA_MINUTES_W = "com.fitnessapp.fitnessapp.EXTRA_MINUTES_W";
-    public static final String EXTRA_SECONDS_R = "com.fitnessapp.fitnessapp.EXTRA_SECONDS_R";
-    public static final String EXTRA_MINUTES_R = "com.fitnessapp.fitnessapp.EXTRA_MINUTES_R";
-    public static final String EXTRA_SETS = "com.fitnessapp.fitnessapp.EXTRA_SETS";
     int minutesWork;
     int secondsWork;
     int minutesRest;
@@ -56,11 +57,11 @@ public class IntervalTimerActivity extends AppCompatActivity {
             minutesWork += 1;
         }
         if(secondsWork < 10) {
-            sSeconds = "0" + Integer.toString(secondsWork);
+            sSeconds = "0" + secondsWork;
         } else {
             sSeconds = Integer.toString(secondsWork);
         }
-        time = Integer.toString(minutesWork) + " : " + sSeconds;
+        time = minutesWork + " : " + sSeconds;
         tw.setText(time);
     }
     public void removeWorkTime(View view){
@@ -75,11 +76,11 @@ public class IntervalTimerActivity extends AppCompatActivity {
         }
 
         if(secondsWork < 10) {
-            sSeconds = "0" + Integer.toString(secondsWork);
+            sSeconds = "0" + secondsWork;
         } else {
             sSeconds = Integer.toString(secondsWork);
         }
-        time = Integer.toString(minutesWork) + " : " + sSeconds;
+        time = minutesWork + " : " + sSeconds;
         tw.setText(time);
     }
     public void addRestTime(View view){
@@ -93,11 +94,11 @@ public class IntervalTimerActivity extends AppCompatActivity {
             minutesRest += 1;
         }
         if(secondsRest < 10) {
-            sSeconds = "0" + Integer.toString(secondsRest);
+            sSeconds = "0" + secondsRest;
         } else {
             sSeconds = Integer.toString(secondsRest);
         }
-        time = Integer.toString(minutesRest) + " : " + sSeconds;
+        time = minutesRest + " : " + sSeconds;
         tw.setText(time);
     }
     public void removeRestTime(View view){
@@ -112,35 +113,36 @@ public class IntervalTimerActivity extends AppCompatActivity {
         }
 
         if(secondsRest < 10) {
-            sSeconds = "0" + Integer.toString(secondsRest);
+            sSeconds = "0" + secondsRest;
         } else {
             sSeconds = Integer.toString(secondsRest);
         }
-        time = Integer.toString(minutesRest) + " : " + sSeconds;
+        time = minutesRest + " : " + sSeconds;
         tw.setText(time);
     }
 
     public void addSets(View view){
         TextView tw = (TextView) findViewById(R.id.textView4);
         setsCount += 1;
-        tw.setText(Integer.toString(setsCount));
+        tw.setText(String.format("%d", setsCount));
     }
 
     public void subtractSets(View view){
         TextView tw = (TextView) findViewById(R.id.textView4);
         if (setsCount <=1) setsCount=0;
         else setsCount -= 1;
-        tw.setText(Integer.toString(setsCount));
+        tw.setText(String.format("%d", setsCount));
     }
 
     public void runIntervalTimer(View view){
-        Intent activity = new Intent(this, IntervalTimerActionActivity.class);
-        activity.putExtra(EXTRA_MINUTES_W, minutesWork);
-        activity.putExtra(EXTRA_SECONDS_W, secondsWork);
-        activity.putExtra(EXTRA_MINUTES_R, minutesRest);
-        activity.putExtra(EXTRA_SECONDS_R, secondsRest);
-        activity.putExtra(EXTRA_SETS, setsCount);
-        startActivity(activity);
+        int workSeconds = (secondsWork + minutesWork * 60) * 1000;
+        int restSeconds = (secondsRest +minutesRest * 60) * 1000;
+        int sets = setsCount;
+        Intent intent = new Intent(this, IntervalTimerActionActivity.class);
+        intent.putExtra("sets", sets);
+        intent.putExtra("wSec", workSeconds);
+        intent.putExtra("rSec", restSeconds);
+        startActivity(intent);
     }
 
 }

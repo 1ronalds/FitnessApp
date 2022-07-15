@@ -70,33 +70,35 @@ public class IntervalTimerActionActivity extends AppCompatActivity {
             public void onFinish() {
                 ToneGenerator toneGen1 = new ToneGenerator(AudioManager.STREAM_MUSIC, 100);
                 toneGen1.startTone(ToneGenerator.TONE_CDMA_MED_PBX_L, 150);
-                CDT2 = new CountDownTimer(rSec, 1000) {
+                if ((s-1)>0) {
+                    CDT2 = new CountDownTimer(rSec, 1000) {
 
-                    public void onTick(long l) {
-                        long rSec = l;
-                        int min = (int) (rSec / 1000) / 60;
-                        int sec = (int) (rSec / 1000) % 60;
-                        String visual = String.format("%02d:%02d", min, sec);
-                        tw.setText(visual);
-                        tw2.setText("Rest");
-                    }
-
-                    public void onFinish() {
-                        ToneGenerator toneGen1 = new ToneGenerator(AudioManager.STREAM_MUSIC, 100);
-                        toneGen1.startTone(ToneGenerator.TONE_CDMA_MED_PBX_L, 150);
-                        tw2.setText("Rest");
-                        runOnUiThread(new Runnable() {
-                            public void run() {
-                                s--;
-                            }
-                        });
-                        if (s > 0) CDT.start();
-                        else {
-                            tw.setText("Well done!");
+                        public void onTick(long l) {
+                            long rSec = l;
+                            int min = (int) (rSec / 1000) / 60;
+                            int sec = (int) (rSec / 1000) % 60;
+                            String visual = String.format("%02d:%02d", min, sec);
+                            tw.setText(visual);
                             tw2.setText("Rest");
                         }
-                    }
-                }.start();
+
+                        public void onFinish() {
+                            ToneGenerator toneGen1 = new ToneGenerator(AudioManager.STREAM_MUSIC, 100);
+                            toneGen1.startTone(ToneGenerator.TONE_CDMA_MED_PBX_L, 150);
+                            tw2.setText("Rest");
+                            s--;
+                            if (s > 0) CDT.start();
+                            else {
+                                tw.setText("Well done!");
+                                tw2.setText("Rest");
+                            }
+                        }
+                    }.start();
+                }
+                else{
+                    tw.setText("Well done!");
+                    tw2.setText("Rest");
+                }
             }
         }.start();
     }

@@ -9,12 +9,18 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Spinner;
 import android.widget.TextView;
 
 import org.w3c.dom.Text;
+
+import java.util.ArrayList;
 
 public class IntervalTimerActivity extends AppCompatActivity {
     int minutesWork;
@@ -22,6 +28,8 @@ public class IntervalTimerActivity extends AppCompatActivity {
     int minutesRest;
     int secondsRest;
     int setsCount;
+
+    String alarm, theme;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,9 +39,9 @@ public class IntervalTimerActivity extends AppCompatActivity {
 
         SharedPreferences sharedpreferences = getSharedPreferences("Settings", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedpreferences.edit();
-        String alarm = getSharedPreferences("Settings", Context.MODE_PRIVATE).getString("alarm", null);
-        String theme = getSharedPreferences("Settings", Context.MODE_PRIVATE).getString("theme", null);
-
+        alarm = getSharedPreferences("Settings", Context.MODE_PRIVATE).getString("alarm", null);
+        theme = getSharedPreferences("Settings", Context.MODE_PRIVATE).getString("theme", null);
+        Log.i("CCC", alarm);
         setContentView(R.layout.activity_interval_timer);
     }
 
@@ -142,6 +150,66 @@ public class IntervalTimerActivity extends AppCompatActivity {
         intent.putExtra("wSec", workSeconds);
         intent.putExtra("rSec", restSeconds);
         startActivity(intent);
+    }
+
+    public void openSettings(View view){
+        setContentView(R.layout.activity_settings);
+        SharedPreferences sharedpreferences = getSharedPreferences("Settings", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedpreferences.edit();
+        Log.i("alarm", alarm);
+        Log.i("theme", theme);
+        Spinner spin = findViewById(R.id.spinner);
+        ArrayList<String> list = new ArrayList<>();
+        list.add("Light");
+        list.add("Dark");
+        ArrayAdapter adapter = new ArrayAdapter(this, com.google.android.material.R.layout.support_simple_spinner_dropdown_item,list);
+        spin.setAdapter(adapter);
+        int spinnerPosition = adapter.getPosition(theme);
+        spin.setSelection(spinnerPosition);
+
+
+        spin.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                String value = adapterView.getItemAtPosition(i).toString();
+                theme = value;
+                int spinnerPosition = adapter.getPosition(theme);
+                spin.setSelection(spinnerPosition);
+                editor.putString("theme", theme);
+                editor.commit();
+            }
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+            }
+        });
+        Spinner spin2 = findViewById(R.id.spinner2);
+        ArrayList<String>list2 = new ArrayList<>();
+        list2.add("Default");
+        list2.add("Long");
+        ArrayAdapter adapter2 = new ArrayAdapter(this, com.google.android.material.R.layout.support_simple_spinner_dropdown_item,list2);
+        spin2.setAdapter(adapter2);
+        int spinnerPosition2 = adapter2.getPosition(alarm);
+        spin2.setSelection(spinnerPosition2);
+
+        spin2.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                String value = adapterView.getItemAtPosition(i).toString();
+                alarm = value;
+                int spinnerPosition = adapter.getPosition(alarm);
+                spin.setSelection(spinnerPosition);
+                editor.putString("alarm", alarm);
+                editor.commit();
+            }
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+            }
+        });
+
+    }
+
+    public void closeSettings(View view){
+        setContentView(R.layout.activity_interval_timer);
     }
 
 }

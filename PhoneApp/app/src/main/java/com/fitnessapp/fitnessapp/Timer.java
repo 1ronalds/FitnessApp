@@ -8,6 +8,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -113,6 +114,8 @@ public class Timer extends AppCompatActivity {
 
     public void openSettings(View view){
         setContentView(R.layout.activity_settings);
+        SharedPreferences sharedpreferences = getSharedPreferences("Settings", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedpreferences.edit();
 
         Spinner spin = findViewById(R.id.spinner);
         ArrayList<String>list = new ArrayList<>();
@@ -120,11 +123,16 @@ public class Timer extends AppCompatActivity {
         list.add("Dark");
         ArrayAdapter adapter = new ArrayAdapter(this, com.google.android.material.R.layout.support_simple_spinner_dropdown_item,list);
         spin.setAdapter(adapter);
+
         spin.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 String value = adapterView.getItemAtPosition(i).toString();
                 theme = value;
+                int spinnerPosition = adapter.getPosition(theme);
+                spin.setSelection(spinnerPosition);
+                editor.putString("theme", theme);
+                editor.commit();
             }
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
@@ -136,11 +144,17 @@ public class Timer extends AppCompatActivity {
         list2.add("Long");
         ArrayAdapter adapter2 = new ArrayAdapter(this, com.google.android.material.R.layout.support_simple_spinner_dropdown_item,list2);
         spin2.setAdapter(adapter2);
-        spin.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+
+        spin2.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 String value = adapterView.getItemAtPosition(i).toString();
                 alarm = value;
+                int spinnerPosition2 = adapter2.getPosition(alarm);
+                spin2.setSelection(spinnerPosition2);
+                editor.putString("alarm", alarm);
+                Log.i("sentalarm", alarm);
+                editor.commit();
             }
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {

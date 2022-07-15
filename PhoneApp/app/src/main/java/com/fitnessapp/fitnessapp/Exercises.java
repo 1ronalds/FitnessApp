@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.Drawable;
@@ -15,6 +16,7 @@ import android.os.Handler;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -43,12 +45,20 @@ import java.util.ArrayList;
 
 
 public class Exercises extends AppCompatActivity {
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
         setContentView(R.layout.activity_exercises);
+
+
+
+        SharedPreferences sharedpreferences = getSharedPreferences("Settings", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedpreferences.edit();
+        String alarm = getSharedPreferences("Settings", Context.MODE_PRIVATE).getString("alarm", null);
+        String theme = getSharedPreferences("Settings", Context.MODE_PRIVATE).getString("theme", null);
 
         RequestQueue queue = Volley.newRequestQueue(this);
         JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, "https://pastebin.com/raw/Ehy7BwQT",

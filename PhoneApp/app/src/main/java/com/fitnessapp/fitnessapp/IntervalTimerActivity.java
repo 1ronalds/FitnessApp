@@ -5,7 +5,9 @@ import static java.lang.Integer.valueOf;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -26,16 +28,13 @@ public class IntervalTimerActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
-        setContentView(R.layout.activity_interval_timer);
-    }
-    public void openExercises(View view) {
-        Intent activity = new Intent(this, Exercises.class);
-        startActivity(activity);
-    }
 
-    public void openSettings(View view) {
-        Intent activity = new Intent(this, SettingsActivity.class);
-        startActivity(activity);
+        SharedPreferences sharedpreferences = getSharedPreferences("Settings", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedpreferences.edit();
+        String alarm = getSharedPreferences("Settings", Context.MODE_PRIVATE).getString("alarm", null);
+        String theme = getSharedPreferences("Settings", Context.MODE_PRIVATE).getString("theme", null);
+
+        setContentView(R.layout.activity_interval_timer);
     }
 
     public void openIntervalTimer(View view){

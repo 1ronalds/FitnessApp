@@ -7,7 +7,9 @@ import static java.lang.Integer.valueOf;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.media.AudioManager;
 import android.media.ToneGenerator;
 import android.os.Bundle;
@@ -34,6 +36,12 @@ public class IntervalTimerActionActivity extends AppCompatActivity {
         setContentView(R.layout.activity_interval_timer_action);
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
+
+        SharedPreferences sharedpreferences = getSharedPreferences("Settings", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedpreferences.edit();
+        String alarm = getSharedPreferences("Settings", Context.MODE_PRIVATE).getString("alarm", null);
+        String theme = getSharedPreferences("Settings", Context.MODE_PRIVATE).getString("theme", null);
+
         TextView tw = findViewById(R.id.textView);
         /*buttonStartPause = findViewById(R.id.button6);
         buttonReset = findViewById(R.id.button5);*/
@@ -136,19 +144,6 @@ public class IntervalTimerActionActivity extends AppCompatActivity {
         });
     }
 
-    public void openExercises(View view) {
-        CDT.cancel();
-        CDT2.cancel();
-        Intent activity = new Intent(this, Exercises.class);
-        startActivity(activity);
-    }
-
-    public void openSettings(View view) {
-        CDT.cancel();
-        CDT2.cancel();
-        Intent activity = new Intent(this, SettingsActivity.class);
-        startActivity(activity);
-    }
 
     public void openIntervalTimer(View view){
         CDT.cancel();

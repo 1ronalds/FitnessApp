@@ -5,7 +5,9 @@ import static java.lang.Thread.*;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.media.AudioManager;
 import android.media.ToneGenerator;
 import android.os.Bundle;
@@ -24,6 +26,12 @@ public class TimerStarted extends AppCompatActivity {
         setContentView(R.layout.activity_timer_started);
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
+
+        SharedPreferences sharedpreferences = getSharedPreferences("Settings", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedpreferences.edit();
+        String alarm = getSharedPreferences("Settings", Context.MODE_PRIVATE).getString("alarm", null);
+        String theme = getSharedPreferences("Settings", Context.MODE_PRIVATE).getString("theme", null);
+
         Intent intent = getIntent();
         final int minutes = intent.getIntExtra(Timer.EXTRA_MINUTES, 0); //0 is mandatory, default value
         final int seconds = intent.getIntExtra(Timer.EXTRA_SECONDS, 0);

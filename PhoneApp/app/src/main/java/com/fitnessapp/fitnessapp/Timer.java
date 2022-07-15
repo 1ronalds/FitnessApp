@@ -2,11 +2,21 @@ package com.fitnessapp.fitnessapp;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.AppCompatSpinner;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
+import android.widget.SpinnerAdapter;
 import android.widget.TextView;
+import android.widget.Toast;
+
+import java.util.ArrayList;
 
 public class Timer extends AppCompatActivity {
 
@@ -15,6 +25,9 @@ public class Timer extends AppCompatActivity {
     int seconds = 0;
     int minutes = 0;
 
+    String alarm, theme;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
 
@@ -22,14 +35,22 @@ public class Timer extends AppCompatActivity {
         setContentView(R.layout.activity_timer);
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
-    }
-    public void openExercises(View view) {
-        Intent activity = new Intent(this, Exercises.class);
-        startActivity(activity);
+
+        SharedPreferences sharedpreferences = getSharedPreferences("Settings", Context.MODE_PRIVATE);
+        SharedPreferences.Editor editor = sharedpreferences.edit();
+        alarm = getSharedPreferences("Settings", Context.MODE_PRIVATE).getString("alarm", null);
+        theme = getSharedPreferences("Settings", Context.MODE_PRIVATE).getString("theme", null);
+
+
+/*
+
+        */
+
+
     }
 
-    public void openSettings(View view) {
-        Intent activity = new Intent(this, SettingsActivity.class);
+    public void openExercises(View view) {
+        Intent activity = new Intent(this, Exercises.class);
         startActivity(activity);
     }
 
@@ -87,6 +108,51 @@ public class Timer extends AppCompatActivity {
         }
         time = Integer.toString(minutes) + " : " + sSeconds;
         tw.setText(time);
+
+    }
+
+    public void openSettings(View view){
+        setContentView(R.layout.activity_settings);
+
+        Spinner spin = findViewById(R.id.spinner);
+        ArrayList<String>list = new ArrayList<>();
+        list.add("Light");
+        list.add("Dark");
+        ArrayAdapter adapter = new ArrayAdapter(this, com.google.android.material.R.layout.support_simple_spinner_dropdown_item,list);
+        spin.setAdapter(adapter);
+        spin.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                String value = adapterView.getItemAtPosition(i).toString();
+                theme = value;
+            }
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+            }
+        });
+        Spinner spin2 = findViewById(R.id.spinner2);
+        ArrayList<String>list2 = new ArrayList<>();
+        list2.add("Default");
+        list2.add("Long");
+        ArrayAdapter adapter2 = new ArrayAdapter(this, com.google.android.material.R.layout.support_simple_spinner_dropdown_item,list2);
+        spin2.setAdapter(adapter2);
+        spin.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
+                String value = adapterView.getItemAtPosition(i).toString();
+                alarm = value;
+            }
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+            }
+        });
+
+
+
+    }
+
+    public void closeSettings(View view){
+        setContentView(R.layout.activity_timer);
     }
 
 }

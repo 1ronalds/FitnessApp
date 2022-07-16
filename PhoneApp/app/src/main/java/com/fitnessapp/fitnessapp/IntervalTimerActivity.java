@@ -53,6 +53,12 @@ public class IntervalTimerActivity extends AppCompatActivity {
         Intent activity = new Intent(this, Timer.class);
         startActivity(activity);
     }
+
+    public void openExercises(View view){
+        Intent activity = new Intent(this, Exercises.class);
+        startActivity(activity);
+    }
+
     public void addWorkTime(View view){
         String time = "";
         String sSeconds = "";
@@ -145,11 +151,13 @@ public class IntervalTimerActivity extends AppCompatActivity {
         int workSeconds = (secondsWork + minutesWork * 60) * 1000;
         int restSeconds = (secondsRest +minutesRest * 60) * 1000;
         int sets = setsCount;
-        Intent intent = new Intent(this, IntervalTimerActionActivity.class);
-        intent.putExtra("sets", sets);
-        intent.putExtra("wSec", workSeconds);
-        intent.putExtra("rSec", restSeconds);
-        startActivity(intent);
+        if (workSeconds!=0 && restSeconds!=0 && sets!=0){
+            Intent intent = new Intent(this, IntervalTimerActionActivity.class);
+            intent.putExtra("sets", sets);
+            intent.putExtra("wSec", workSeconds);
+            intent.putExtra("rSec", restSeconds);
+            startActivity(intent);
+        }
     }
 
     public void openSettings(View view){
@@ -211,5 +219,4 @@ public class IntervalTimerActivity extends AppCompatActivity {
     public void closeSettings(View view){
         setContentView(R.layout.activity_interval_timer);
     }
-
 }

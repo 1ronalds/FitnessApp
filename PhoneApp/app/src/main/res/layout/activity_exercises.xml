@@ -31,48 +31,46 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 
-                <android.widget.Button
+                <Button
                     android:id="@+id/timerBtn"
-                    style="@style/Widget.MaterialComponents.Button.TextButton"
+                    style="@style/CButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:onClick="openTimer"
-                    android:text="Timer"
-                    android:textColor="@color/black"
-                    android:textSize="12sp" />
+                    android:textSize="11sp"
+                    android:text="Timer" />
 
                 <Button
                     android:id="@+id/intervalTimerBtn"
-                    style="@style/Widget.MaterialComponents.Button.TextButton"
-                    android:layout_width="156dp"
-                    android:layout_height="match_parent"
+                    style="@style/CButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:onClick="openIntervalTimer"
-                    android:text="Interval timer"
-                    android:textColor="@color/black"
-                    android:textSize="12sp" />
+                    android:textSize="11sp"
+                    android:text="Interval timer" />
 
                 <Button
                     android:id="@+id/exercisesBtn"
-                    style="@style/Widget.MaterialComponents.Button.TextButton"
-                    android:layout_width="112dp"
+                    style="@style/CButton"
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="Exercises"
-                    android:textColor="@color/black"
-                    android:textSize="12sp"
-                    android:textStyle="bold" />
+                    android:textSize="11sp"
+                    android:fontFamily="@font/inter_bold"
+                    android:text="Exercises" />
 
                 <ImageButton
                     android:id="@+id/settingsButton"
                     android:layout_width="48dp"
-                    android:layout_height="match_parent"
+                    android:layout_height="48dp"
                     android:layout_weight="1"
                     android:backgroundTint="@color/white"
                     app:srcCompat="@drawable/ic_settings" />
 
             </LinearLayout>
+
         </LinearLayout>
     </ScrollView>
 

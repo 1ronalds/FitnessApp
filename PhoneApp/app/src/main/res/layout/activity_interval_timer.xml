@@ -26,39 +26,33 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
-            <android.widget.Button
+            <Button
                 android:id="@+id/timerBtn"
-                style="@style/Widget.MaterialComponents.Button.TextButton"
+                style="@style/CButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:onClick="openTimer"
-                android:text="Timer"
-                android:textColor="@color/black"
-                android:textSize="12dp" />
+                android:text="Timer" />
 
             <Button
                 android:id="@+id/intervalTimerBtn"
-                style="@style/Widget.MaterialComponents.Button.TextButton"
-                android:layout_width="156dp"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:onClick="openIntervalTimer"
                 android:text="Interval timer"
-                android:textStyle="bold"
-                android:textColor="@color/black"
-                android:textSize="12dp" />
+                style="@style/CButton"
+                android:fontFamily="@font/inter_bold" />
 
             <Button
                 android:id="@+id/exercisesBtn"
-                style="@style/Widget.MaterialComponents.Button.TextButton"
-                android:layout_width="112dp"
+                style="@style/CButton"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:onClick="openExercises"
-                android:text="Exercises"
-                android:textColor="@color/black"
-                android:textSize="12dp" />
+                android:text="Exercises" />
 
             <ImageButton
                 android:id="@+id/settingsButton"
@@ -93,6 +87,7 @@
             android:textAlignment="center"
             android:textSize="25sp"
             app:layout_constraintEnd_toEndOf="parent"
+            android:fontFamily="@font/inter_regular"
             app:layout_constraintStart_toStartOf="parent" />
 
         <LinearLayout
@@ -114,6 +109,7 @@
                 android:layout_width="97dp"
                 android:layout_height="35dp"
                 android:layout_weight="1"
+                android:fontFamily="@font/inter_regular"
                 android:text="0"
                 android:textAlignment="center"
                 android:textSize="25sp" />
@@ -134,6 +130,7 @@
             android:layout_height="35dp"
             android:text="Work"
             android:textAlignment="center"
+            android:fontFamily="@font/inter_regular"
             android:textSize="25sp" />
 
         <LinearLayout
@@ -156,6 +153,7 @@
                 android:layout_height="35dp"
                 android:layout_weight="1"
                 android:text="00 : 00"
+                android:fontFamily="@font/inter_regular"
                 android:textAlignment="center"
                 android:textSize="25sp" />
 
@@ -175,6 +173,7 @@
             android:layout_width="match_parent"
             android:layout_height="35dp"
             android:text="Rest"
+            android:fontFamily="@font/inter_regular"
             android:textAlignment="center"
             android:textSize="25sp" />
 
@@ -198,6 +197,7 @@
                 android:layout_height="35dp"
                 android:layout_weight="1"
                 android:text="00 : 00"
+                android:fontFamily="@font/inter_regular"
                 android:textAlignment="center"
                 android:textSize="25sp" />
 

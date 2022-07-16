@@ -3,15 +3,18 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
-        <entry key="..\:/Users/user/Documents/FitnessApp/PhoneApp/app/src/main/res/layout/activity_exercises.xml" value="0.176" />
-        <entry key="..\:/Users/user/Documents/FitnessApp/PhoneApp/app/src/main/res/layout/activity_interval_timer.xml" value="0.264" />
-        <entry key="..\:/Users/user/Documents/FitnessApp/PhoneApp/app/src/main/res/layout/activity_interval_timer_action.xml" value="0.15367180417044424" />
+        <entry key="..\:/Users/rutar/AndroidStudioProjects/FitnessApp/PhoneApp/app/src/main/res/drawable/ic_launcher_background.xml" value="0.1895" />
+        <entry key="..\:/Users/rutar/AndroidStudioProjects/FitnessApp/PhoneApp/app/src/main/res/layout/activity_exercises.xml" value="0.24635416666666668" />
+        <entry key="..\:/Users/rutar/AndroidStudioProjects/FitnessApp/PhoneApp/app/src/main/res/layout/activity_interval_timer.xml" value="0.264" />
+        <entry key="..\:/Users/rutar/AndroidStudioProjects/FitnessApp/PhoneApp/app/src/main/res/layout/activity_interval_timer_action.xml" value="0.4" />
+        <entry key="..\:/Users/rutar/AndroidStudioProjects/FitnessApp/PhoneApp/app/src/main/res/layout/activity_main.xml" value="0.25" />
+        <entry key="..\:/Users/rutar/AndroidStudioProjects/FitnessApp/PhoneApp/app/src/main/res/layout/activity_settings.xml" value="0.24635416666666668" />
+        <entry key="..\:/Users/rutar/AndroidStudioProjects/FitnessApp/PhoneApp/app/src/main/res/layout/activity_timer.xml" value="0.24635416666666668" />
+        <entry key="..\:/Users/rutar/AndroidStudioProjects/FitnessApp/PhoneApp/app/src/main/res/layout/activity_timer_started.xml" value="0.536" />
+        <entry key="..\:/Users/user/Documents/FitnessApp/PhoneApp/app/src/main/res/layout/activity_exercises.xml" value="0.2" />
         <entry key="..\:/Users/user/Documents/FitnessApp/PhoneApp/app/src/main/res/layout/activity_main.xml" value="0.2" />
-        <entry key="..\:/Users/user/Documents/FitnessApp/PhoneApp/app/src/main/res/layout/activity_main2.xml" value="0.1" />
-        <entry key="..\:/Users/user/Documents/FitnessApp/PhoneApp/app/src/main/res/layout/activity_settings.xml" value="0.264" />
         <entry key="..\:/Users/user/Documents/FitnessApp/PhoneApp/app/src/main/res/layout/activity_timer.xml" value="0.264" />
         <entry key="..\:/Users/user/Documents/FitnessApp/PhoneApp/app/src/main/res/layout/activity_timer2.xml" value="0.1" />
-        <entry key="..\:/Users/user/Documents/FitnessApp/PhoneApp/app/src/main/res/layout/activity_timer_started.xml" value="0.264" />
       </map>
     </option>
   </component>

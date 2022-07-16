@@ -28,6 +28,9 @@ public class IntervalTimerActionActivity extends AppCompatActivity {
     public boolean isTimerRunning;
     public int s;
     public int ss;
+    public long wSec;
+    public long rSec;
+    public long wwSec;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,8 +46,6 @@ public class IntervalTimerActionActivity extends AppCompatActivity {
         String theme = getSharedPreferences("Settings", Context.MODE_PRIVATE).getString("theme", null);
 
         TextView tw = findViewById(R.id.textView);
-        /*buttonStartPause = findViewById(R.id.button6);
-        buttonReset = findViewById(R.id.button5);*/
 
         Intent intent = getIntent();
         final int sets = intent.getIntExtra("sets", 0);
@@ -53,13 +54,11 @@ public class IntervalTimerActionActivity extends AppCompatActivity {
 
         final int secWork = valueOf(workSec);
         final int secRest = valueOf(restSec);
-        s = (int) valueOf(sets);
-        ss = (int) valueOf(sets);
+        wSec = secWork;
+        rSec = secRest;
+        s = valueOf(sets);
+        ss = s;
 
-
-        int wSec = (int) secWork;
-        int rSec = (int) secRest;
-        int sec = wSec + rSec;
         TextView tw2 = (TextView) findViewById(R.id.textView3);
         TextView tw3 = (TextView) findViewById(R.id.textViewSets);
         pauseStartTimer = findViewById(R.id.button6);
@@ -69,9 +68,9 @@ public class IntervalTimerActionActivity extends AppCompatActivity {
             @Override
             public void onTick(long l) {
                 isTimerRunning = true;
-                long wSec = l;
-                int min = (int) (wSec / 1000) / 60;
-                int sec = (int) (wSec / 1000) % 60;
+                wwSec = l;
+                int min = (int) (wwSec / 1000) / 60;
+                int sec = (int) (wwSec / 1000) % 60;
                 String visual = String.format("%02d:%02d", min, sec);
                 tw.setText(visual);
                 tw2.setText("Work");
@@ -91,10 +90,7 @@ public class IntervalTimerActionActivity extends AppCompatActivity {
                             String visual = String.format("%02d:%02d", min, sec);
                             tw.setText(visual);
                             tw2.setText("Rest");
-
-
                         }
-
                         public void onFinish() {
                             ToneGenerator toneGen1 = new ToneGenerator(AudioManager.STREAM_MUSIC, 100);
                             toneGen1.startTone(ToneGenerator.TONE_CDMA_MED_PBX_L, 150);
@@ -135,13 +131,6 @@ public class IntervalTimerActionActivity extends AppCompatActivity {
                 }
             }
         });
-
-        restartTimer.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View view) {
-                resetTimer();
-            }
-        });
     }
 
 
@@ -159,11 +148,22 @@ public class IntervalTimerActionActivity extends AppCompatActivity {
         startActivity(activity);
     }
 
-    public void resetTimer(){
+    public void resetTimer(View view){
         CDT.cancel();
         CDT2.cancel();
         Intent activity = new Intent(this, IntervalTimerActivity.class);
         startActivity(activity);
+    }
+
+    public void openExercises(View view){
+        CDT.cancel();
+        CDT2.cancel();
+        Intent activity = new Intent(this, Exercises.class);
+        startActivity(activity);
+    }
+    public void opeSettings(View view){
+        CDT.cancel();
+        CDT2.cancel();
     }
 
 }

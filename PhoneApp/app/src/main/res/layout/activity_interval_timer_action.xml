@@ -26,39 +26,33 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 
-                <android.widget.Button
+                <Button
                     android:id="@+id/timerBtn"
-                    style="@style/Widget.MaterialComponents.Button.TextButton"
+                    style="@style/CButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:onClick="openTimer"
-                    android:text="Timer"
-                    android:textColor="@color/black"
-                    android:textSize="12sp" />
+                    android:text="Timer" />
 
                 <Button
                     android:id="@+id/intervalTimerBtn"
-                    style="@style/Widget.MaterialComponents.Button.TextButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:onClick="openIntervalTimer"
                     android:text="Interval timer"
-                    android:textColor="@color/black"
-                    android:textSize="12sp"
-                    android:textStyle="bold" />
+                    style="@style/CButton"
+                    android:fontFamily="@font/inter_bold" />
 
                 <Button
                     android:id="@+id/exercisesBtn"
-                    style="@style/Widget.MaterialComponents.Button.TextButton"
+                    style="@style/CButton"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:onClick="openExercises"
-                    android:text="Exercises"
-                    android:textColor="@color/black"
-                    android:textSize="12sp" />
+                    android:text="Exercises" />
 
                 <ImageButton
                     android:id="@+id/settingsButton"
@@ -66,7 +60,7 @@
                     android:layout_height="48dp"
                     android:layout_weight="1"
                     android:backgroundTint="@color/white"
-                    android:onClick="openSettings"
+                    android:onClick="opeSettings"
                     app:srcCompat="@drawable/ic_settings" />
 
             </LinearLayout>
@@ -80,6 +74,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="35dp"
                 android:textAlignment="center"
+                android:fontFamily="@font/inter_regular"
                 android:textSize="25sp" />
 
             <Space
@@ -93,6 +88,7 @@
                 android:layout_height="84dp"
                 android:text="0 : 00"
                 android:textAlignment="center"
+                android:fontFamily="@font/inter_regular"
                 android:textAppearance="@style/TextAppearance.AppCompat.Large"
                 android:textSize="65dp" />
 
@@ -108,6 +104,7 @@
                 android:layout_height="wrap_content"
                 android:text="Work"
                 android:textAlignment="center"
+                android:fontFamily="@font/inter_regular"
                 android:textSize="25sp" />
 
             <Space
@@ -173,6 +170,7 @@
                     android:layout_width="119dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1" />
+
             </LinearLayout>
 
         </LinearLayout>

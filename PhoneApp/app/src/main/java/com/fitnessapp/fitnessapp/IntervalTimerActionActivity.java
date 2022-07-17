@@ -133,7 +133,7 @@ public class IntervalTimerActionActivity extends AppCompatActivity {
                     }
                     else {
                         setsCount+=1;
-                        residualTime=workSec;
+                        residualTime = workSec;
                         isWorkTime = true;
                         isRestTime = false;
                         timer(restSec, workSec, sets, tw, tw2, tw3);
@@ -159,6 +159,7 @@ public class IntervalTimerActionActivity extends AppCompatActivity {
         }
         else {
             isTimerRunning = true;
+            residualTime = 7000;
             pauseStartTimer.setText("II");
             CDT.start();
         }

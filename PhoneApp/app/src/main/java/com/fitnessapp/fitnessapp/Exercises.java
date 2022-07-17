@@ -9,11 +9,13 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.os.Handler;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -94,13 +96,22 @@ public class Exercises extends AppCompatActivity {
             String img = exercise.getString("src");
             ImageView imgv = new ImageView(this);
             TextView titlev = new TextView(this);
+            Typeface face = Typeface.createFromAsset(getAssets(),"pizza.ttf");
+            titlev.setTypeface(face);
+            titlev.setGravity(Gravity.CENTER);
             TextView descriptionv = new TextView(this);
+            Typeface face2 = Typeface.createFromAsset(getAssets(),"pizza.ttf");
+            descriptionv.setTypeface(face2);
             Glide.with(this).load(img).into(imgv);
+            System.out.println(" ");
             ll.addView(imgv);
+            System.out.println(" ");
             titlev.setText(title);
             ll.addView(titlev);
+            System.out.println(" ");
             descriptionv.setText(description);
             ll.addView(descriptionv);
+            System.out.println(" ");
         }
     }
 

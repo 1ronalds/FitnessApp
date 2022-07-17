@@ -24,7 +24,7 @@ public class IntervalTimerActionActivity extends AppCompatActivity {
     public long residualTime;
     public boolean isWorkTime = true;
     public boolean isRestTime = false;
-    public int setsCount;
+    public int setsCount=1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,7 +51,7 @@ public class IntervalTimerActionActivity extends AppCompatActivity {
         final int restSec = intent.getIntExtra("rSec", 0);
 
         residualTime=workSec;
-        timer(residualTime, restSec, workSec, sets, tw, tw2, tw3);
+        timer(restSec, workSec, sets, tw, tw2, tw3);
 
         restartTimer.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -60,11 +60,17 @@ public class IntervalTimerActionActivity extends AppCompatActivity {
             }
         });
 
+        pauseStartTimer.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+              pauseStartTimer(restSec, workSec, sets, tw, tw2, tw3);
+            }
+        });
+
     }
 
-    public void timer(long allTime, int restSec, int workSec, int sets, TextView tw, TextView tw2, TextView tw3){
+    public void timer(int restSec, int workSec, int sets, TextView tw, TextView tw2, TextView tw3){
         if (residualTime>0 && isWorkTime == true && setsCount<=sets) {
-            setsCount+=1;
             isTimerRunning = true;
             CDT = new CountDownTimer(residualTime, 1000) {
                 @Override
@@ -94,7 +100,7 @@ public class IntervalTimerActionActivity extends AppCompatActivity {
                         isWorkTime = false;
                         isRestTime = true;
                         residualTime = restSec;
-                        timer(allTime, restSec, workSec, sets, tw, tw2, tw3);
+                        timer(restSec, workSec, sets, tw, tw2, tw3);
                     }
                 }
             }.start();
@@ -126,25 +132,14 @@ public class IntervalTimerActionActivity extends AppCompatActivity {
                         tw2.setText("Rest");
                     }
                     else {
+                        setsCount+=1;
                         residualTime=workSec;
                         isWorkTime = true;
                         isRestTime = false;
-                        timer(allTime, restSec, workSec, sets, tw, tw2, tw3);
+                        timer(restSec, workSec, sets, tw, tw2, tw3);
                     }
                 }
             }.start();
-        }
-    }
-
-    public void pauseStartTimer(View view){
-        if(isTimerRunning = true){
-            CDT.cancel();
-            isTimerRunning = false;
-            pauseStartTimer.setText("▶");
-        }
-        else{
-            CDT.start();
-            pauseStartTimer.setText("II");
         }
     }
 
@@ -156,6 +151,18 @@ public class IntervalTimerActionActivity extends AppCompatActivity {
         CDT.start();
     }
 
+    public void pauseStartTimer(int restSec, int workSec, int sets, TextView tw, TextView tw2, TextView tw3){
+        if(isTimerRunning == true){
+            CDT.cancel();
+            isTimerRunning = false;
+            pauseStartTimer.setText("▶");
+        }
+        else {
+            isTimerRunning = true;
+            pauseStartTimer.setText("II");
+            CDT.start();
+        }
+    }
     public void openIntervalTimer(View view){
         CDT.cancel();
         Intent activity = new Intent(this, IntervalTimerActivity.class);

@@ -96,22 +96,18 @@ public class Exercises extends AppCompatActivity {
             String img = exercise.getString("src");
             ImageView imgv = new ImageView(this);
             TextView titlev = new TextView(this);
-            Typeface face = Typeface.createFromAsset(getAssets(),"inter_bold.otf");
-            titlev.setTypeface(face);
+            titlev.setTypeface(null, Typeface.BOLD);
             titlev.setGravity(Gravity.CENTER);
+            titlev.setTextSize(0, 65);
             TextView descriptionv = new TextView(this);
-            Typeface face2 = Typeface.createFromAsset(getAssets(),"inter_regular.otf");
-            descriptionv.setTypeface(face2);
+            descriptionv.setTypeface(null, Typeface.NORMAL);
             Glide.with(this).load(img).into(imgv);
-            System.out.println(" ");
             ll.addView(imgv);
-            System.out.println(" ");
             titlev.setText(title);
             ll.addView(titlev);
-            System.out.println(" ");
-            descriptionv.setText(description);
+            descriptionv.setText(description + "\n\n\n\n\n");
+            descriptionv.setTextSize(0, 50);
             ll.addView(descriptionv);
-            System.out.println(" ");
         }
     }
 

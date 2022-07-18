@@ -150,11 +150,12 @@ public class IntervalTimerActionActivity extends AppCompatActivity {
     }
 
     public void resetTimer(int restSec, int workSec, int sets, TextView tw, TextView tw2, TextView tw3){
+        CDT.cancel();
         isWorkTime = true;
         isRestTime = false;
         residualTime = workSec;
         setsCount = 1;
-        CDT.start();
+        timer(restSec, workSec, sets, tw, tw2, tw3);
     }
 
     public void pauseStartTimer(int restSec, int workSec, int sets, TextView tw, TextView tw2, TextView tw3){

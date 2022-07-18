@@ -2,8 +2,9 @@
 <resources>
 
      <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-        <item name="colorPrimary">@font/inter_regular</item>
-        <item name="colorPrimaryDark">@font/inter_bold</item>
+         <item name="colorPrimary">@font/inter_regular</item>
+         <item name="colorPrimaryDark">@font/inter_bold</item>
+         <item name="fontFamily">@font/inter_regular</item>
     </style>
 
     <style name="ButtonStyle" parent="android:Theme">

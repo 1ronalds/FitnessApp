@@ -16,6 +16,8 @@ import android.widget.TextView;
 
 import org.w3c.dom.Text;
 
+import java.util.Objects;
+
 public class IntervalTimerActionActivity extends AppCompatActivity {
     private CountDownTimer CDT;
     public Button pauseStartTimer;
@@ -50,6 +52,10 @@ public class IntervalTimerActionActivity extends AppCompatActivity {
         final int workSec = intent.getIntExtra("wSec", 0);
         final int restSec = intent.getIntExtra("rSec", 0);
 
+        int min = (int) (workSec / 1000) / 60;
+        int sec = (int) (workSec / 1000) % 60;
+        String visual = String.format("%02d:%02d", min, sec);
+        tw.setText(visual);
         residualTime=workSec;
         timer(restSec, workSec, sets, tw, tw2, tw3);
 
@@ -159,9 +165,8 @@ public class IntervalTimerActionActivity extends AppCompatActivity {
         }
         else {
             isTimerRunning = true;
-            residualTime = 7000;
             pauseStartTimer.setText("II");
-            CDT.start();
+           timer(restSec, workSec, sets, tw, tw2, tw3);
         }
     }
     public void openIntervalTimer(View view){

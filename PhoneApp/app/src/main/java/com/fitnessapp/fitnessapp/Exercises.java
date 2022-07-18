@@ -96,11 +96,11 @@ public class Exercises extends AppCompatActivity {
             String img = exercise.getString("src");
             ImageView imgv = new ImageView(this);
             TextView titlev = new TextView(this);
-            Typeface face = Typeface.createFromAsset(getAssets(),"pizza.ttf");
+            Typeface face = Typeface.createFromAsset(getAssets(),"inter_bold.otf");
             titlev.setTypeface(face);
             titlev.setGravity(Gravity.CENTER);
             TextView descriptionv = new TextView(this);
-            Typeface face2 = Typeface.createFromAsset(getAssets(),"pizza.ttf");
+            Typeface face2 = Typeface.createFromAsset(getAssets(),"inter_regular.otf");
             descriptionv.setTypeface(face2);
             Glide.with(this).load(img).into(imgv);
             System.out.println(" ");

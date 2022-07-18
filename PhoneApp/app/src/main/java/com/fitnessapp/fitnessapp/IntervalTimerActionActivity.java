@@ -2,20 +2,24 @@ package com.fitnessapp.fitnessapp;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
+
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.res.ColorStateList;
-import android.graphics.Color;
+import android.media.AudioAttributes;
 import android.media.AudioManager;
+import android.media.SoundPool;
 import android.media.ToneGenerator;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageButton;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
+
+import org.w3c.dom.Text;
+
+import java.util.Objects;
 
 public class IntervalTimerActionActivity extends AppCompatActivity {
     private CountDownTimer CDT;
@@ -26,6 +30,9 @@ public class IntervalTimerActionActivity extends AppCompatActivity {
     public boolean isWorkTime = true;
     public boolean isRestTime = false;
     public int setsCount=1;
+
+    private SoundPool soundpool;
+    private int tone;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,32 +46,23 @@ public class IntervalTimerActionActivity extends AppCompatActivity {
         SharedPreferences.Editor editor = sharedpreferences.edit();
         String alarm = getSharedPreferences("Settings", Context.MODE_PRIVATE).getString("alarm", null);
         String theme = getSharedPreferences("Settings", Context.MODE_PRIVATE).getString("theme", null);
-        if(theme.equals("Dark")){
-            RelativeLayout rl = (RelativeLayout) findViewById(R.id.rl);
-            rl.setBackgroundColor(Color.parseColor("#000000"));
-            TextView tw = (TextView) findViewById(R.id.textView);
-            tw.setBackgroundColor(Color.parseColor("#000000"));
-            tw.setTextColor(Color.parseColor("#FFFFFF"));
-            TextView tw2 = (TextView) findViewById(R.id.textView3);
-            tw2.setBackgroundColor(Color.parseColor("#000000"));
-            tw2.setTextColor(Color.parseColor("#FFFFFF"));
-            TextView tw3 = (TextView) findViewById(R.id.textViewSets);
-            tw3.setBackgroundColor(Color.parseColor("#000000"));
-            tw3.setTextColor(Color.parseColor("#FFFFFF"));
-            Button btn1 = (Button) findViewById(R.id.timerBtn);
-            btn1.setBackgroundTintList(ColorStateList.valueOf((Color.parseColor("#000000"))));
-            btn1.setTextColor(Color.parseColor("#FFFFFF"));
-            Button btn2 = (Button) findViewById(R.id.intervalTimerBtn);
-            btn2.setBackgroundTintList(ColorStateList.valueOf((Color.parseColor("#000000"))));
-            btn2.setTextColor(Color.parseColor("#FFFFFF"));
-            Button btn3 = (Button) findViewById(R.id.exercisesBtn);
-            btn3.setBackgroundTintList(ColorStateList.valueOf((Color.parseColor("#000000"))));
-            btn3.setTextColor(Color.parseColor("#FFFFFF"));
-            ImageButton btn4 = (ImageButton) findViewById(R.id.settingsButton);
-            btn4.setColorFilter(Color.parseColor("#FFFFFF"));
-            btn4.setBackgroundTintList(ColorStateList.valueOf((Color.parseColor("#000000"))));
 
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            AudioAttributes audioatribbutes = new AudioAttributes.Builder()
+                    .setUsage(AudioAttributes.USAGE_ALARM)
+                    .setContentType(AudioAttributes.CONTENT_TYPE_SONIFICATION)
+                    .build();
+            soundpool = new SoundPool.Builder()
+                    .setMaxStreams(1)
+                    .setAudioAttributes(audioatribbutes)
+                    .build();
         }
+        else {
+            soundpool = new SoundPool(1, AudioManager.STREAM_MUSIC, 0);
+        }
+
+        chooseSound(alarm);
+
         TextView tw = findViewById(R.id.textView);
         TextView tw2 = (TextView) findViewById(R.id.textView3);
         TextView tw3 = (TextView) findViewById(R.id.textViewSets);
@@ -117,8 +115,8 @@ public class IntervalTimerActionActivity extends AppCompatActivity {
 
                 @Override
                 public void onFinish() {
-                    ToneGenerator toneGen1 = new ToneGenerator(AudioManager.STREAM_MUSIC, 100);
-                    toneGen1.startTone(ToneGenerator.TONE_CDMA_MED_PBX_L, 150);
+                    soundpool.play(tone, 1, 1, 0, 0, 1);
+                    soundpool.autoPause();
                     isWorkTime = false;
                     isRestTime = true;
                     if(setsCount==sets){
@@ -152,8 +150,8 @@ public class IntervalTimerActionActivity extends AppCompatActivity {
 
                 @Override
                 public void onFinish() {
-                    ToneGenerator toneGen1 = new ToneGenerator(AudioManager.STREAM_MUSIC, 100);
-                    toneGen1.startTone(ToneGenerator.TONE_CDMA_MED_PBX_L, 150);
+                    soundpool.play(tone, 1, 1, 0, 0, 1);
+                    soundpool.autoPause();
                     isWorkTime = true;
                     isRestTime = false;
                     if(setsCount>=sets){
@@ -167,7 +165,7 @@ public class IntervalTimerActionActivity extends AppCompatActivity {
                         isWorkTime = true;
                         isRestTime = false;
                         timer(restSec, workSec, sets, tw, tw2, tw3);
-                     }
+                    }
                 }
             }.start();
         }
@@ -213,6 +211,71 @@ public class IntervalTimerActionActivity extends AppCompatActivity {
     }
     public void opeSettings(View view){
         CDT.cancel();
+    }
+
+    public void chooseSound(String alarm) {
+        switch (alarm){
+            case "Beep":{
+                tone = soundpool.load(this, R.raw.beep4, 1);
+                soundpool.play(tone, 1, 1, 0, 0, 1);
+                soundpool.autoPause();
+                break;
+            }
+            case "Alarm long":{
+                tone = soundpool.load(this, R.raw.alarm_long, 1);
+                soundpool.play(tone, 1, 1, 0, 0, 1);
+                soundpool.autoPause();
+                break;
+            }
+            case "Cat":{
+                tone = soundpool.load(this, R.raw.cat_meow, 1);
+                soundpool.play(tone, 1, 1, 0, 0, 1);
+                soundpool.autoPause();
+                break;
+            }
+            case "Alarm":{
+                tone = soundpool.load(this, R.raw.coltonmanz__alarm, 1);
+                soundpool.play(tone, 1, 1, 0, 0, 1);
+                soundpool.autoPause();
+                break;
+            }
+            case "Dog":{
+                tone = soundpool.load(this, R.raw.dog, 1);
+                soundpool.play(tone, 1, 1, 0, 0, 1);
+                soundpool.autoPause();
+                break;
+            }
+            case "Elephant":{
+                tone = soundpool.load(this, R.raw.elephant, 1);
+                soundpool.play(tone, 1, 1, 0, 0, 1);
+                soundpool.autoPause();
+                break;
+            }
+            case "Gong":{
+                tone = soundpool.load(this, R.raw.gong, 1);
+                soundpool.play(tone, 1, 1, 0, 0, 1);
+                soundpool.autoPause();
+                break;
+            }
+            case "Luna bell":{
+                tone = soundpool.load(this, R.raw.luna_bell, 1);
+                soundpool.play(tone, 1, 1, 0, 0, 1);
+                soundpool.autoPause();
+                break;
+            }
+            case "Rooster":{
+                tone = soundpool.load(this, R.raw.rooster, 1);
+                soundpool.play(tone, 1, 1, 0, 0, 1);
+                soundpool.autoPause();
+                break;
+            }
+            case "Cool tone":{
+                tone = soundpool.load(this, R.raw.tissman__cool_tone, 1);
+                soundpool.play(tone, 1, 1, 0, 0, 1);
+                soundpool.autoPause();
+                break;
+            }
+        }
     }
 
 }

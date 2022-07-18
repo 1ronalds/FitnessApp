@@ -6,10 +6,8 @@
     android:layout_height="match_parent">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/rl"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="#FFFFFF">
+        android:layout_height="match_parent">
 
         <TextView
             android:id="@+id/textView12"
@@ -17,8 +15,8 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="36dp"
             android:layout_marginTop="36dp"
-            android:fontFamily="@font/inter_regular"
             android:text="Alarm"
+            android:fontFamily="@font/inter_regular"
             android:textColor="#000000"
             android:textSize="17sp"
             app:layout_constraintStart_toStartOf="parent"
@@ -51,10 +49,9 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
             android:fontFamily="sans-serif-medium"
-            android:text="Settings"
+            android:text="SETTINGS"
             android:textAlignment="center"
             android:textColor="#000000"
-            android:textSize="16sp"
             android:textStyle="bold"
             android:typeface="normal"
             app:layout_constraintEnd_toEndOf="parent"
@@ -76,8 +73,8 @@
             android:layout_height="wrap_content"
             android:layout_marginStart="36dp"
             android:layout_marginTop="128dp"
-            android:fontFamily="@font/inter_regular"
             android:text="Theme"
+            android:fontFamily="@font/inter_regular"
             android:textColor="#000000"
             android:textSize="17sp"
             app:layout_constraintStart_toStartOf="parent"

@@ -1,24 +1,27 @@
 package com.fitnessapp.fitnessapp;
 
+import static java.lang.Integer.valueOf;
+
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.constraintlayout.widget.ConstraintLayout;
+
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.res.ColorStateList;
-import android.graphics.Color;
-import android.graphics.PorterDuff;
+import android.graphics.Paint;
+import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.ImageButton;
-import android.widget.RelativeLayout;
+import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.TextView;
+
+import org.w3c.dom.Text;
+
 import java.util.ArrayList;
 
 public class IntervalTimerActivity extends AppCompatActivity {
@@ -29,7 +32,7 @@ public class IntervalTimerActivity extends AppCompatActivity {
     int setsCount;
 
     String alarm, theme;
-    TextView textView2 = null;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,45 +43,8 @@ public class IntervalTimerActivity extends AppCompatActivity {
         SharedPreferences.Editor editor = sharedpreferences.edit();
         alarm = getSharedPreferences("Settings", Context.MODE_PRIVATE).getString("alarm", null);
         theme = getSharedPreferences("Settings", Context.MODE_PRIVATE).getString("theme", null);
-
-
         Log.i("CCC", alarm);
         setContentView(R.layout.activity_interval_timer);
-        if(theme.equals("Dark")) {
-            RelativeLayout rl = (RelativeLayout) findViewById(R.id.rl);
-            rl.setBackgroundColor(Color.parseColor("#000000"));
-            TextView tw = (TextView) findViewById(R.id.textView2);
-            tw.setBackgroundColor(Color.parseColor("#000000"));
-            tw.setTextColor(Color.parseColor("#FFFFFF"));
-            TextView tw2 = (TextView) findViewById(R.id.textView4);
-            tw2.setBackgroundColor(Color.parseColor("#000000"));
-            tw2.setTextColor(Color.parseColor("#FFFFFF"));
-            TextView tw3 = (TextView) findViewById(R.id.textView5);
-            tw3.setBackgroundColor(Color.parseColor("#000000"));
-            tw3.setTextColor(Color.parseColor("#FFFFFF"));
-            TextView tw4 = (TextView) findViewById(R.id.textView7);
-            tw4.setBackgroundColor(Color.parseColor("#000000"));
-            tw4.setTextColor(Color.parseColor("#FFFFFF"));
-            TextView tw5 = (TextView) findViewById(R.id.textView9);
-            tw5.setBackgroundColor(Color.parseColor("#000000"));
-            tw5.setTextColor(Color.parseColor("#FFFFFF"));
-            TextView tw6 = (TextView) findViewById(R.id.textView10);
-            tw6.setBackgroundColor(Color.parseColor("#000000"));
-            tw6.setTextColor(Color.parseColor("#FFFFFF"));
-            Button btn1 = (Button) findViewById(R.id.timerBtn);
-            btn1.setBackgroundTintList(ColorStateList.valueOf((Color.parseColor("#000000"))));
-            btn1.setTextColor(Color.parseColor("#FFFFFF"));
-            Button btn2 = (Button) findViewById(R.id.intervalTimerBtn);
-            btn2.setBackgroundTintList(ColorStateList.valueOf((Color.parseColor("#000000"))));
-            btn2.setTextColor(Color.parseColor("#FFFFFF"));
-            Button btn3 = (Button) findViewById(R.id.exercisesBtn);
-            btn3.setBackgroundTintList(ColorStateList.valueOf((Color.parseColor("#000000"))));
-            btn3.setTextColor(Color.parseColor("#FFFFFF"));
-            ImageButton btn4 = (ImageButton) findViewById(R.id.settingsButton);
-            btn4.setColorFilter(Color.parseColor("#FFFFFF"));
-            btn4.setBackgroundTintList(ColorStateList.valueOf((Color.parseColor("#000000"))));
-        }
-
     }
 
     public void openIntervalTimer(View view){
@@ -112,11 +78,7 @@ public class IntervalTimerActivity extends AppCompatActivity {
         }
         time = minutesWork + " : " + sSeconds;
         tw.setText(time);
-        if(theme.equals("Light")){
-            tw.setTextColor(getResources().getColor(R.color.black));
-        } else {
-            tw.setTextColor(getResources().getColor(R.color.white));
-        }
+        tw.setTextColor(getResources().getColor(R.color.black));
     }
     public void removeWorkTime(View view){
         String time = "";
@@ -154,12 +116,7 @@ public class IntervalTimerActivity extends AppCompatActivity {
         }
         time = minutesRest + " : " + sSeconds;
         tw.setText(time);
-
-        if(theme.equals("Light")){
-            tw.setTextColor(getResources().getColor(R.color.black));
-        } else {
-            tw.setTextColor(getResources().getColor(R.color.white));
-        }
+        tw.setTextColor(getResources().getColor(R.color.black));
     }
     public void removeRestTime(View view){
         String time = "";
@@ -185,12 +142,7 @@ public class IntervalTimerActivity extends AppCompatActivity {
         TextView tw = (TextView) findViewById(R.id.textView4);
         setsCount += 1;
         tw.setText(String.format("%d", setsCount));
-
-        if(theme.equals("Light")){
-            tw.setTextColor(getResources().getColor(R.color.black));
-        } else {
-            tw.setTextColor(getResources().getColor(R.color.white));
-        }
+        tw.setTextColor(getResources().getColor(R.color.black));
     }
 
     public void subtractSets(View view){
@@ -229,6 +181,8 @@ public class IntervalTimerActivity extends AppCompatActivity {
         setContentView(R.layout.activity_settings);
         SharedPreferences sharedpreferences = getSharedPreferences("Settings", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedpreferences.edit();
+        Log.i("alarm", alarm);
+        Log.i("theme", theme);
         Spinner spin = findViewById(R.id.spinner);
         ArrayList<String> list = new ArrayList<>();
         list.add("Light");
@@ -248,42 +202,6 @@ public class IntervalTimerActivity extends AppCompatActivity {
                 spin.setSelection(spinnerPosition);
                 editor.putString("theme", theme);
                 editor.commit();
-                if(theme.equals("Dark")){
-                    ((TextView) adapterView.getChildAt(0)).setTextColor(Color.parseColor("#FFFFFF"));
-                    textView2.setTextColor(Color.parseColor("#FFFFFF"));
-                    TextView tw8 = (TextView) findViewById(R.id.textView8);
-                    tw8.setTextColor(Color.parseColor("#FFFFFF"));
-                    ConstraintLayout cl = (ConstraintLayout) findViewById(R.id.rl);
-                    cl.setBackgroundColor(Color.parseColor("#000000"));
-                    TextView tw11 = (TextView) findViewById(R.id.textView11);
-                    tw11.setTextColor(Color.parseColor("#FFFFFF"));
-                    TextView tw12= (TextView) findViewById(R.id.textView12);
-                    tw12.setTextColor(Color.parseColor("#FFFFFF"));
-                    Spinner spinner1 = (Spinner) findViewById(R.id.spinner);
-                    spinner1.getBackground().setColorFilter(getResources().getColor(R.color.white), PorterDuff.Mode.SRC_ATOP);
-                    Spinner spinner2 = (Spinner) findViewById(R.id.spinner2);
-                    spinner2.getBackground().setColorFilter(getResources().getColor(R.color.white), PorterDuff.Mode.SRC_ATOP);
-                    ImageButton closeBtn = (ImageButton) findViewById(R.id.closeButton);
-                    closeBtn.setColorFilter(Color.parseColor("#FFFFFF"));
-                    closeBtn.setBackgroundTintList(ColorStateList.valueOf((Color.parseColor("#000000"))));
-                } else {
-                    TextView tw8 = (TextView) findViewById(R.id.textView8);
-                    textView2.setTextColor(Color.parseColor("#000000"));
-                    tw8.setTextColor(Color.parseColor("#000000"));
-                    ConstraintLayout cl = (ConstraintLayout) findViewById(R.id.rl);
-                    cl.setBackgroundColor(Color.parseColor("#FFFFFF"));
-                    TextView tw11 = (TextView) findViewById(R.id.textView11);
-                    tw11.setTextColor(Color.parseColor("#000000"));
-                    TextView tw12= (TextView) findViewById(R.id.textView12);
-                    tw12.setTextColor(Color.parseColor("#000000"));
-                    Spinner spinner1 = (Spinner) findViewById(R.id.spinner);
-                    spinner1.getBackground().setColorFilter(getResources().getColor(R.color.black), PorterDuff.Mode.SRC_ATOP);
-                    Spinner spinner2 = (Spinner) findViewById(R.id.spinner2);
-                    spinner2.getBackground().setColorFilter(getResources().getColor(R.color.black), PorterDuff.Mode.SRC_ATOP);
-                    ImageButton closeBtn = (ImageButton) findViewById(R.id.closeButton);
-                    closeBtn.setColorFilter(Color.parseColor("#000000"));
-                    closeBtn.setBackgroundTintList(ColorStateList.valueOf((Color.parseColor("#FFFFFF"))));
-                }
             }
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
@@ -291,8 +209,16 @@ public class IntervalTimerActivity extends AppCompatActivity {
         });
         Spinner spin2 = findViewById(R.id.spinner2);
         ArrayList<String>list2 = new ArrayList<>();
-        list2.add("Default");
+        list2.add("Beep");
         list2.add("Long");
+        list2.add("Cat");
+        list2.add("Alarm");
+        list2.add("Dog");
+        list2.add("Elephant");
+        list2.add("Gong");
+        list2.add("Luna bell");
+        list2.add("Rooster");
+        list2.add("Cool tone");
         ArrayAdapter adapter2 = new ArrayAdapter(this, com.google.android.material.R.layout.support_simple_spinner_dropdown_item,list2);
         spin2.setAdapter(adapter2);
         int spinnerPosition2 = adapter2.getPosition(alarm);
@@ -302,13 +228,11 @@ public class IntervalTimerActivity extends AppCompatActivity {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 String value = adapterView.getItemAtPosition(i).toString();
-                textView2 = ((TextView) adapterView.getChildAt(0));
                 alarm = value;
                 int spinnerPosition = adapter.getPosition(alarm);
-                spin2.setSelection(spinnerPosition);
+                spin.setSelection(spinnerPosition);
                 editor.putString("alarm", alarm);
                 editor.commit();
-
             }
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
@@ -319,44 +243,5 @@ public class IntervalTimerActivity extends AppCompatActivity {
 
     public void closeSettings(View view){
         setContentView(R.layout.activity_interval_timer);
-        minutesWork = 0;
-        secondsWork = 0;
-        minutesRest = 0;
-        secondsRest = 0;
-        setsCount = 0;
-        if(theme.equals("Dark")) {
-            RelativeLayout rl = (RelativeLayout) findViewById(R.id.rl);
-            rl.setBackgroundColor(Color.parseColor("#000000"));
-            TextView tw = (TextView) findViewById(R.id.textView2);
-            tw.setBackgroundColor(Color.parseColor("#000000"));
-            tw.setTextColor(Color.parseColor("#FFFFFF"));
-            TextView tw2 = (TextView) findViewById(R.id.textView4);
-            tw2.setBackgroundColor(Color.parseColor("#000000"));
-            tw2.setTextColor(Color.parseColor("#FFFFFF"));
-            TextView tw3 = (TextView) findViewById(R.id.textView5);
-            tw3.setBackgroundColor(Color.parseColor("#000000"));
-            tw3.setTextColor(Color.parseColor("#FFFFFF"));
-            TextView tw4 = (TextView) findViewById(R.id.textView7);
-            tw4.setBackgroundColor(Color.parseColor("#000000"));
-            tw4.setTextColor(Color.parseColor("#FFFFFF"));
-            TextView tw5 = (TextView) findViewById(R.id.textView9);
-            tw5.setBackgroundColor(Color.parseColor("#000000"));
-            tw5.setTextColor(Color.parseColor("#FFFFFF"));
-            TextView tw6 = (TextView) findViewById(R.id.textView10);
-            tw6.setBackgroundColor(Color.parseColor("#000000"));
-            tw6.setTextColor(Color.parseColor("#FFFFFF"));
-            Button btn1 = (Button) findViewById(R.id.timerBtn);
-            btn1.setBackgroundTintList(ColorStateList.valueOf((Color.parseColor("#000000"))));
-            btn1.setTextColor(Color.parseColor("#FFFFFF"));
-            Button btn2 = (Button) findViewById(R.id.intervalTimerBtn);
-            btn2.setBackgroundTintList(ColorStateList.valueOf((Color.parseColor("#000000"))));
-            btn2.setTextColor(Color.parseColor("#FFFFFF"));
-            Button btn3 = (Button) findViewById(R.id.exercisesBtn);
-            btn3.setBackgroundTintList(ColorStateList.valueOf((Color.parseColor("#000000"))));
-            btn3.setTextColor(Color.parseColor("#FFFFFF"));
-            ImageButton btn4 = (ImageButton) findViewById(R.id.settingsButton);
-            btn4.setColorFilter(Color.parseColor("#FFFFFF"));
-            btn4.setBackgroundTintList(ColorStateList.valueOf((Color.parseColor("#000000"))));
-        }
     }
 }

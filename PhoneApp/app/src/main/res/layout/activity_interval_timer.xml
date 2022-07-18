@@ -2,6 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rl"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:gravity="center"
@@ -22,6 +23,7 @@
             android:layout_height="wrap_content"
             android:gravity="center"
             android:orientation="horizontal"
+            android:paddingTop="16dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
@@ -33,17 +35,19 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:onClick="openTimer"
-                android:text="Timer" />
+                android:text="Timer"
+                android:textSize="16sp" />
 
             <Button
                 android:id="@+id/intervalTimerBtn"
+                style="@style/CButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
+                android:fontFamily="@font/inter_bold"
                 android:onClick="openIntervalTimer"
                 android:text="Interval timer"
-                style="@style/CButton"
-                android:fontFamily="@font/inter_bold" />
+                android:textSize="16sp" />
 
             <Button
                 android:id="@+id/exercisesBtn"
@@ -52,7 +56,8 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:onClick="openExercises"
-                android:text="Exercises" />
+                android:text="Exercises"
+                android:textSize="16sp" />
 
             <ImageButton
                 android:id="@+id/settingsButton"
@@ -83,11 +88,12 @@
             android:id="@+id/textView2"
             android:layout_width="match_parent"
             android:layout_height="35dp"
+            android:fontFamily="@font/inter_regular"
             android:text="Sets"
             android:textAlignment="center"
+            android:textColor="#000000"
             android:textSize="25sp"
             app:layout_constraintEnd_toEndOf="parent"
-            android:fontFamily="@font/inter_regular"
             app:layout_constraintStart_toStartOf="parent" />
 
         <LinearLayout
@@ -112,7 +118,9 @@
                 android:fontFamily="@font/inter_regular"
                 android:text="0"
                 android:textAlignment="center"
-                android:textSize="25sp" />
+                android:textColor="#000000"
+                android:textSize="25sp"
+                android:textStyle="bold" />
 
             <ImageButton
                 android:id="@+id/imageButton3"
@@ -128,9 +136,10 @@
             android:id="@+id/textView5"
             android:layout_width="match_parent"
             android:layout_height="35dp"
+            android:fontFamily="@font/inter_regular"
             android:text="Work"
             android:textAlignment="center"
-            android:fontFamily="@font/inter_regular"
+            android:textColor="#000000"
             android:textSize="25sp" />
 
         <LinearLayout
@@ -152,10 +161,12 @@
                 android:layout_width="97dp"
                 android:layout_height="35dp"
                 android:layout_weight="1"
-                android:text="00 : 00"
                 android:fontFamily="@font/inter_regular"
+                android:text="00 : 00"
                 android:textAlignment="center"
-                android:textSize="25sp" />
+                android:textColor="#000000"
+                android:textSize="25sp"
+                android:textStyle="bold" />
 
             <ImageButton
                 android:id="@+id/imageButton5"
@@ -172,9 +183,10 @@
             android:id="@+id/textView9"
             android:layout_width="match_parent"
             android:layout_height="35dp"
-            android:text="Rest"
             android:fontFamily="@font/inter_regular"
+            android:text="Rest"
             android:textAlignment="center"
+            android:textColor="#000000"
             android:textSize="25sp" />
 
         <LinearLayout
@@ -196,10 +208,12 @@
                 android:layout_width="97dp"
                 android:layout_height="35dp"
                 android:layout_weight="1"
-                android:text="00 : 00"
                 android:fontFamily="@font/inter_regular"
+                android:text="00 : 00"
                 android:textAlignment="center"
-                android:textSize="25sp" />
+                android:textColor="#000000"
+                android:textSize="25sp"
+                android:textStyle="bold" />
 
             <ImageButton
                 android:id="@+id/imageButton7"

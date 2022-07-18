@@ -1,22 +1,21 @@
 package com.fitnessapp.fitnessapp;
 
-import static java.lang.Thread.*;
-
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
-
+import androidx.constraintlayout.widget.ConstraintLayout;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.ColorStateList;
+import android.graphics.Color;
 import android.media.AudioManager;
 import android.media.ToneGenerator;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
-
-import java.util.TimerTask;
 
 public class TimerStarted extends AppCompatActivity {
     CountDownTimer CDT = null;
@@ -32,10 +31,28 @@ public class TimerStarted extends AppCompatActivity {
         String alarm = getSharedPreferences("Settings", Context.MODE_PRIVATE).getString("alarm", null);
         String theme = getSharedPreferences("Settings", Context.MODE_PRIVATE).getString("theme", null);
 
+        TextView tw = (TextView) findViewById(R.id.textView6);
+        if(theme.equals("Dark")) {
+            ConstraintLayout cl = (ConstraintLayout) findViewById(R.id.rl);
+            cl.setBackgroundColor(Color.parseColor("#000000"));
+            tw.setBackgroundColor(Color.parseColor("#000000"));
+            tw.setTextColor(Color.parseColor("#FFFFFF"));
+            Button btn1 = (Button) findViewById(R.id.timerBtn);
+            btn1.setBackgroundTintList(ColorStateList.valueOf((Color.parseColor("#000000"))));
+            btn1.setTextColor(Color.parseColor("#FFFFFF"));
+            Button btn2 = (Button) findViewById(R.id.intervalTimerBtn);
+            btn2.setBackgroundTintList(ColorStateList.valueOf((Color.parseColor("#000000"))));
+            btn2.setTextColor(Color.parseColor("#FFFFFF"));
+            Button btn3 = (Button) findViewById(R.id.exercisesBtn);
+            btn3.setBackgroundTintList(ColorStateList.valueOf((Color.parseColor("#000000"))));
+            btn3.setTextColor(Color.parseColor("#FFFFFF"));
+            ImageButton btn4 = (ImageButton) findViewById(R.id.settingsButton);
+            btn4.setColorFilter(Color.parseColor("#FFFFFF"));
+            btn4.setBackgroundTintList(ColorStateList.valueOf((Color.parseColor("#000000"))));
+        }
         Intent intent = getIntent();
         final int minutes = intent.getIntExtra(Timer.EXTRA_MINUTES, 0); //0 is mandatory, default value
         final int seconds = intent.getIntExtra(Timer.EXTRA_SECONDS, 0);
-        TextView tw = (TextView) findViewById(R.id.textView6);
         String sSeconds = "";
         String time = "";
         if(seconds < 10) {

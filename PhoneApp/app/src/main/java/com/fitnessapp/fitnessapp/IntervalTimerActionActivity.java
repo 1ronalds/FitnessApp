@@ -2,21 +2,20 @@ package com.fitnessapp.fitnessapp;
 
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.res.ColorStateList;
+import android.graphics.Color;
 import android.media.AudioManager;
 import android.media.ToneGenerator;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
-
-import org.w3c.dom.Text;
-
-import java.util.Objects;
 
 public class IntervalTimerActionActivity extends AppCompatActivity {
     private CountDownTimer CDT;
@@ -40,7 +39,32 @@ public class IntervalTimerActionActivity extends AppCompatActivity {
         SharedPreferences.Editor editor = sharedpreferences.edit();
         String alarm = getSharedPreferences("Settings", Context.MODE_PRIVATE).getString("alarm", null);
         String theme = getSharedPreferences("Settings", Context.MODE_PRIVATE).getString("theme", null);
+        if(theme.equals("Dark")){
+            RelativeLayout rl = (RelativeLayout) findViewById(R.id.rl);
+            rl.setBackgroundColor(Color.parseColor("#000000"));
+            TextView tw = (TextView) findViewById(R.id.textView);
+            tw.setBackgroundColor(Color.parseColor("#000000"));
+            tw.setTextColor(Color.parseColor("#FFFFFF"));
+            TextView tw2 = (TextView) findViewById(R.id.textView3);
+            tw2.setBackgroundColor(Color.parseColor("#000000"));
+            tw2.setTextColor(Color.parseColor("#FFFFFF"));
+            TextView tw3 = (TextView) findViewById(R.id.textViewSets);
+            tw3.setBackgroundColor(Color.parseColor("#000000"));
+            tw3.setTextColor(Color.parseColor("#FFFFFF"));
+            Button btn1 = (Button) findViewById(R.id.timerBtn);
+            btn1.setBackgroundTintList(ColorStateList.valueOf((Color.parseColor("#000000"))));
+            btn1.setTextColor(Color.parseColor("#FFFFFF"));
+            Button btn2 = (Button) findViewById(R.id.intervalTimerBtn);
+            btn2.setBackgroundTintList(ColorStateList.valueOf((Color.parseColor("#000000"))));
+            btn2.setTextColor(Color.parseColor("#FFFFFF"));
+            Button btn3 = (Button) findViewById(R.id.exercisesBtn);
+            btn3.setBackgroundTintList(ColorStateList.valueOf((Color.parseColor("#000000"))));
+            btn3.setTextColor(Color.parseColor("#FFFFFF"));
+            ImageButton btn4 = (ImageButton) findViewById(R.id.settingsButton);
+            btn4.setColorFilter(Color.parseColor("#FFFFFF"));
+            btn4.setBackgroundTintList(ColorStateList.valueOf((Color.parseColor("#000000"))));
 
+        }
         TextView tw = findViewById(R.id.textView);
         TextView tw2 = (TextView) findViewById(R.id.textView3);
         TextView tw3 = (TextView) findViewById(R.id.textViewSets);
@@ -143,7 +167,7 @@ public class IntervalTimerActionActivity extends AppCompatActivity {
                         isWorkTime = true;
                         isRestTime = false;
                         timer(restSec, workSec, sets, tw, tw2, tw3);
-                    }
+                     }
                 }
             }.start();
         }

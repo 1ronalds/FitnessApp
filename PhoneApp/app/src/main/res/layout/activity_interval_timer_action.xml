@@ -2,178 +2,180 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/rl"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FFFFFF"
     android:gravity="center"
     tools:context=".IntervalTimerActionActivity">
 
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
         <LinearLayout
+            android:id="@+id/linearLayout2"
             android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:orientation="vertical"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:paddingTop="16dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
-            <LinearLayout
-                android:id="@+id/linearLayout2"
+            <Button
+                android:id="@+id/timerBtn"
+                style="@style/CButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:gravity="center"
-                android:orientation="horizontal"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent">
+                android:layout_weight="1"
+                android:text="Timer"
+                android:textSize="16sp" />
 
-                <Button
-                    android:id="@+id/timerBtn"
-                    style="@style/CButton"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:onClick="openTimer"
-                    android:text="Timer" />
-
-                <Button
-                    android:id="@+id/intervalTimerBtn"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:onClick="openIntervalTimer"
-                    android:text="Interval timer"
-                    style="@style/CButton"
-                    android:fontFamily="@font/inter_bold" />
-
-                <Button
-                    android:id="@+id/exercisesBtn"
-                    style="@style/CButton"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:onClick="openExercises"
-                    android:text="Exercises" />
-
-                <ImageButton
-                    android:id="@+id/settingsButton"
-                    android:layout_width="48dp"
-                    android:layout_height="48dp"
-                    android:layout_weight="1"
-                    android:backgroundTint="@color/white"
-                    android:onClick="opeSettings"
-                    app:srcCompat="@drawable/ic_settings" />
-
-            </LinearLayout>
-
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="100dp" />
-
-            <TextView
-                android:id="@+id/textViewSets"
-                android:layout_width="match_parent"
-                android:layout_height="35dp"
-                android:textAlignment="center"
-                android:fontFamily="@font/inter_regular"
-                android:textSize="25sp" />
-
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="15dp"
-                />
-
-            <TextView
-                android:id="@+id/textView"
-                android:layout_width="match_parent"
-                android:layout_height="84dp"
-                android:text="0 : 00"
-                android:textAlignment="center"
-                android:fontFamily="@font/inter_regular"
-                android:textAppearance="@style/TextAppearance.AppCompat.Large"
-                android:textSize="65dp" />
-
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="35dp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent" />
-
-            <TextView
-                android:id="@+id/textView3"
-                android:layout_width="match_parent"
+            <Button
+                android:id="@+id/intervalTimerBtn"
+                style="@style/CButton"
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Work"
-                android:textAlignment="center"
-                android:fontFamily="@font/inter_regular"
-                android:textSize="25sp" />
+                android:layout_weight="1"
+                android:fontFamily="@font/inter_bold"
+                android:text="Interval timer"
+                android:textSize="16sp" />
 
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="35dp" />
+            <Button
+                android:id="@+id/exercisesBtn"
+                style="@style/CButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Exercises"
+                android:textSize="16sp" />
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal">
-
-                <Space
-                    android:layout_width="119dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1" />
-
-                <Button
-                    android:id="@+id/button5"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:backgroundTint="#D9D9D9"
-                    android:includeFontPadding="false"
-                    android:insetTop="0dp"
-                    android:insetBottom="0dp"
-                    android:padding="0dp"
-                    android:paddingLeft="0dp"
-                    android:paddingTop="0dp"
-                    android:paddingRight="0dp"
-                    android:paddingBottom="0dp"
-                    android:text="■"
-                    android:textAlignment="center"
-                    android:textColor="#000000"
-                    android:textSize="30sp"
-                    app:cornerRadius="50dp"
-                    app:iconPadding="0dp" />
-
-                <Space
-                    android:layout_width="35dp"
-                    android:layout_height="81dp"
-                    android:layout_weight="1" />
-
-                <Button
-                    android:id="@+id/button6"
-                    android:layout_width="50dp"
-                    android:layout_height="50dp"
-                    android:backgroundTint="#D9D9D9"
-                    android:includeFontPadding="false"
-                    android:insetTop="0dp"
-                    android:insetBottom="0dp"
-                    android:onClick="pauseStartTimer"
-                    android:padding="0dp"
-                    android:paddingLeft="0dp"
-                    android:paddingTop="0dp"
-                    android:paddingRight="0dp"
-                    android:paddingBottom="0dp"
-                    android:text="II"
-                    android:textAlignment="center"
-                    android:textColor="#000000"
-                    android:textSize="25sp"
-                    app:cornerRadius="50dp"
-                    app:iconPadding="0dp" />
-
-                <Space
-                    android:layout_width="119dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1" />
-
-            </LinearLayout>
+            <ImageButton
+                android:id="@+id/settingsButton"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_weight="1"
+                android:backgroundTint="@color/white"
+                app:srcCompat="@drawable/ic_settings" />
 
         </LinearLayout>
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="100dp" />
+
+        <TextView
+            android:id="@+id/textViewSets"
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            android:fontFamily="@font/inter_regular"
+            android:textAlignment="center"
+            android:textSize="25sp" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="15dp" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="match_parent"
+            android:layout_height="84dp"
+            android:fontFamily="@font/inter_regular"
+            android:text="0 : 00"
+            android:textAlignment="center"
+            android:textAppearance="@style/TextAppearance.AppCompat.Large"
+            android:textSize="65dp" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="35dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/inter_regular"
+            android:text="Work"
+            android:textAlignment="center"
+            android:textColor="#000000"
+            android:textSize="25sp" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="35dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <Space
+                android:layout_width="119dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+            <Button
+                android:id="@+id/button5"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:backgroundTint="#D9D9D9"
+                android:includeFontPadding="false"
+                android:insetTop="0dp"
+                android:insetBottom="0dp"
+                android:padding="0dp"
+                android:paddingLeft="0dp"
+                android:paddingTop="0dp"
+                android:paddingRight="0dp"
+                android:paddingBottom="0dp"
+                android:text="■"
+                android:textAlignment="center"
+                android:textColor="#000000"
+                android:textSize="30sp"
+                app:cornerRadius="50dp"
+                app:iconPadding="0dp" />
+
+            <Space
+                android:layout_width="35dp"
+                android:layout_height="81dp"
+                android:layout_weight="1" />
+
+            <Button
+                android:id="@+id/button6"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:backgroundTint="#D9D9D9"
+                android:includeFontPadding="false"
+                android:insetTop="0dp"
+                android:insetBottom="0dp"
+                android:onClick="pauseStartTimer"
+                android:padding="0dp"
+                android:paddingLeft="0dp"
+                android:paddingTop="0dp"
+                android:paddingRight="0dp"
+                android:paddingBottom="0dp"
+                android:text="II"
+                android:textAlignment="center"
+                android:textColor="#000000"
+                android:textSize="25sp"
+                app:cornerRadius="50dp"
+                app:iconPadding="0dp" />
+
+            <Space
+                android:layout_width="119dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+        </LinearLayout>
+
+    </LinearLayout>
 
 </RelativeLayout>

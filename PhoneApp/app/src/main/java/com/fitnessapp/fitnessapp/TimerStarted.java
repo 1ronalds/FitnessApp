@@ -1,24 +1,30 @@
 package com.fitnessapp.fitnessapp;
 
+import static java.lang.Thread.*;
+
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.constraintlayout.widget.ConstraintLayout;
+
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.res.ColorStateList;
-import android.graphics.Color;
+import android.media.AudioAttributes;
 import android.media.AudioManager;
+import android.media.SoundPool;
 import android.media.ToneGenerator;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageButton;
 import android.widget.TextView;
+
+import java.util.TimerTask;
 
 public class TimerStarted extends AppCompatActivity {
     CountDownTimer CDT = null;
+    private SoundPool soundpool;
+    private int tone;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -31,28 +37,25 @@ public class TimerStarted extends AppCompatActivity {
         String alarm = getSharedPreferences("Settings", Context.MODE_PRIVATE).getString("alarm", null);
         String theme = getSharedPreferences("Settings", Context.MODE_PRIVATE).getString("theme", null);
 
-        TextView tw = (TextView) findViewById(R.id.textView6);
-        if(theme.equals("Dark")) {
-            ConstraintLayout cl = (ConstraintLayout) findViewById(R.id.rl);
-            cl.setBackgroundColor(Color.parseColor("#000000"));
-            tw.setBackgroundColor(Color.parseColor("#000000"));
-            tw.setTextColor(Color.parseColor("#FFFFFF"));
-            Button btn1 = (Button) findViewById(R.id.timerBtn);
-            btn1.setBackgroundTintList(ColorStateList.valueOf((Color.parseColor("#000000"))));
-            btn1.setTextColor(Color.parseColor("#FFFFFF"));
-            Button btn2 = (Button) findViewById(R.id.intervalTimerBtn);
-            btn2.setBackgroundTintList(ColorStateList.valueOf((Color.parseColor("#000000"))));
-            btn2.setTextColor(Color.parseColor("#FFFFFF"));
-            Button btn3 = (Button) findViewById(R.id.exercisesBtn);
-            btn3.setBackgroundTintList(ColorStateList.valueOf((Color.parseColor("#000000"))));
-            btn3.setTextColor(Color.parseColor("#FFFFFF"));
-            ImageButton btn4 = (ImageButton) findViewById(R.id.settingsButton);
-            btn4.setColorFilter(Color.parseColor("#FFFFFF"));
-            btn4.setBackgroundTintList(ColorStateList.valueOf((Color.parseColor("#000000"))));
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            AudioAttributes audioatribbutes = new AudioAttributes.Builder()
+                    .setUsage(AudioAttributes.USAGE_ALARM)
+                    .setContentType(AudioAttributes.CONTENT_TYPE_SONIFICATION)
+                    .build();
+            soundpool = new SoundPool.Builder()
+                    .setMaxStreams(1)
+                    .setAudioAttributes(audioatribbutes)
+                    .build();
         }
+        else {
+            soundpool = new SoundPool(1, AudioManager.STREAM_MUSIC, 0);
+        }
+        chooseSound(alarm);
+
         Intent intent = getIntent();
         final int minutes = intent.getIntExtra(Timer.EXTRA_MINUTES, 0); //0 is mandatory, default value
         final int seconds = intent.getIntExtra(Timer.EXTRA_SECONDS, 0);
+        TextView tw = (TextView) findViewById(R.id.textView6);
         String sSeconds = "";
         String time = "";
         if(seconds < 10) {
@@ -87,8 +90,8 @@ public class TimerStarted extends AppCompatActivity {
             @Override
             public void onFinish(){
                 tw.setText("0 : 00");
-                ToneGenerator toneGen1 = new ToneGenerator(AudioManager.STREAM_MUSIC, 100);
-                toneGen1.startTone(ToneGenerator.TONE_CDMA_MED_PBX_L,150);
+                soundpool.play(tone, 1, 1, 0, 0, 1);
+                soundpool.autoPause();
                 startActivity(activity);
             }
 
@@ -113,5 +116,70 @@ public class TimerStarted extends AppCompatActivity {
         pause.setVisibility(View.VISIBLE);
         play.setVisibility(View.INVISIBLE);
         CDT.start();
+    }
+
+    public void chooseSound(String alarm) {
+        switch (alarm){
+            case "Beep":{
+                tone = soundpool.load(this, R.raw.beep4, 1);
+                soundpool.play(tone, 1, 1, 0, 0, 1);
+                soundpool.autoPause();
+                break;
+            }
+            case "Alarm long":{
+                tone = soundpool.load(this, R.raw.alarm_long, 1);
+                soundpool.play(tone, 1, 1, 0, 0, 1);
+                soundpool.autoPause();
+                break;
+            }
+            case "Cat":{
+                tone = soundpool.load(this, R.raw.cat_meow, 1);
+                soundpool.play(tone, 1, 1, 0, 0, 1);
+                soundpool.autoPause();
+                break;
+            }
+            case "Alarm":{
+                tone = soundpool.load(this, R.raw.coltonmanz__alarm, 1);
+                soundpool.play(tone, 1, 1, 0, 0, 1);
+                soundpool.autoPause();
+                break;
+            }
+            case "Dog":{
+                tone = soundpool.load(this, R.raw.dog, 1);
+                soundpool.play(tone, 1, 1, 0, 0, 1);
+                soundpool.autoPause();
+                break;
+            }
+            case "Elephant":{
+                tone = soundpool.load(this, R.raw.elephant, 1);
+                soundpool.play(tone, 1, 1, 0, 0, 1);
+                soundpool.autoPause();
+                break;
+            }
+            case "Gong":{
+                tone = soundpool.load(this, R.raw.gong, 1);
+                soundpool.play(tone, 1, 1, 0, 0, 1);
+                soundpool.autoPause();
+                break;
+            }
+            case "Luna bell":{
+                tone = soundpool.load(this, R.raw.luna_bell, 1);
+                soundpool.play(tone, 1, 1, 0, 0, 1);
+                soundpool.autoPause();
+                break;
+            }
+            case "Rooster":{
+                tone = soundpool.load(this, R.raw.rooster, 1);
+                soundpool.play(tone, 1, 1, 0, 0, 1);
+                soundpool.autoPause();
+                break;
+            }
+            case "Cool tone":{
+                tone = soundpool.load(this, R.raw.tissman__cool_tone, 1);
+                soundpool.play(tone, 1, 1, 0, 0, 1);
+                soundpool.autoPause();
+                break;
+            }
+        }
     }
 }

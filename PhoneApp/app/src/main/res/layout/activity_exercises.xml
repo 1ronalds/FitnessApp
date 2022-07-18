@@ -60,7 +60,6 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:onClick="openExercises"
                     android:text="Exercises"
                     android:textSize="16sp"
                     android:textStyle="bold" />
@@ -72,7 +71,7 @@
                     android:layout_weight="1"
                     android:backgroundTint="@color/white"
                     android:onClick="openSettings"
-                    android:tint="#000000"
+                    app:tint="#000000"
                     app:srcCompat="@drawable/ic_settings" />
 
             </LinearLayout>

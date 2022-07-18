@@ -70,6 +70,10 @@ public class Timer extends AppCompatActivity {
             activity.putExtra(EXTRA_SECONDS, seconds);
             startActivity(activity);
         }
+        else if(seconds<=0 && minutes<=0) {
+            TextView tw = (TextView) findViewById(R.id.textView6);
+            tw.setTextColor(getResources().getColor(R.color.red));
+        }
     }
 
 
@@ -90,6 +94,7 @@ public class Timer extends AppCompatActivity {
         }
         time = Integer.toString(minutes) + " : " + sSeconds;
         tw.setText(time);
+        tw.setTextColor(getResources().getColor(R.color.black));
     }
     public void removeTime(View view){
         String time = "";

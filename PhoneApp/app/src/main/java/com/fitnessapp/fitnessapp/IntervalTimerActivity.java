@@ -78,6 +78,7 @@ public class IntervalTimerActivity extends AppCompatActivity {
         }
         time = minutesWork + " : " + sSeconds;
         tw.setText(time);
+        tw.setTextColor(getResources().getColor(R.color.black));
     }
     public void removeWorkTime(View view){
         String time = "";
@@ -115,6 +116,7 @@ public class IntervalTimerActivity extends AppCompatActivity {
         }
         time = minutesRest + " : " + sSeconds;
         tw.setText(time);
+        tw.setTextColor(getResources().getColor(R.color.black));
     }
     public void removeRestTime(View view){
         String time = "";
@@ -140,6 +142,7 @@ public class IntervalTimerActivity extends AppCompatActivity {
         TextView tw = (TextView) findViewById(R.id.textView4);
         setsCount += 1;
         tw.setText(String.format("%d", setsCount));
+        tw.setTextColor(getResources().getColor(R.color.black));
     }
 
     public void subtractSets(View view){
@@ -159,6 +162,18 @@ public class IntervalTimerActivity extends AppCompatActivity {
             intent.putExtra("wSec", workSeconds);
             intent.putExtra("rSec", restSeconds);
             startActivity(intent);
+        }
+        else if (sets == 0) {
+            TextView tw = (TextView) findViewById(R.id.textView4);
+            tw.setTextColor(getResources().getColor(R.color.red));
+        }
+        else if (workSeconds == 0) {
+            TextView tw2 = (TextView) findViewById(R.id.textView7);
+            tw2.setTextColor(getResources().getColor(R.color.red));
+        }
+        else if (restSeconds == 0) {
+            TextView tw3 = (TextView) findViewById(R.id.textView10);
+            tw3.setTextColor(getResources().getColor(R.color.red));
         }
     }
 

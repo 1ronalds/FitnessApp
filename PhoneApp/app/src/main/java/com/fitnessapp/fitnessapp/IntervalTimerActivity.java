@@ -83,15 +83,18 @@ public class IntervalTimerActivity extends AppCompatActivity {
 
     public void openIntervalTimer(View view){
         Intent activity = new Intent(this, IntervalTimerActivity.class);
+        activity.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
         startActivity(activity);
     }
     public void openTimer(View view){
         Intent activity = new Intent(this, Timer.class);
+        activity.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
         startActivity(activity);
     }
 
     public void openExercises(View view){
         Intent activity = new Intent(this, Exercises.class);
+        activity.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
         startActivity(activity);
     }
 
@@ -209,6 +212,7 @@ public class IntervalTimerActivity extends AppCompatActivity {
             intent.putExtra("sets", sets);
             intent.putExtra("wSec", workSeconds);
             intent.putExtra("rSec", restSeconds);
+            intent.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
             startActivity(intent);
         }
         else {

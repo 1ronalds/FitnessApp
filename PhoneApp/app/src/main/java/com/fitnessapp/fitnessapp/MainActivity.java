@@ -28,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
         }
         setContentView(R.layout.activity_main);
         Intent activity = new Intent(this, Timer.class);
+        activity.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
         startActivity(activity);
     }
 }

@@ -113,6 +113,7 @@ public class TimerStarted extends AppCompatActivity {
             public void onFinish(){
                 tw.setText("0 : 00");
                 soundpool.play(tone, 1, 1, 0, 0, 1);
+                activity.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
                 startActivity(activity);
             }
 
@@ -122,6 +123,7 @@ public class TimerStarted extends AppCompatActivity {
     public void openTimer(View view){
         CDT.cancel();
         Intent activity = new Intent(this, Timer.class);
+        activity.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
         startActivity(activity);
     }
     public void pause(View view){

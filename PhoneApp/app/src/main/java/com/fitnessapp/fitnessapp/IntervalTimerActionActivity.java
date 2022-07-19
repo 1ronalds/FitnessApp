@@ -14,6 +14,7 @@ import android.media.ToneGenerator;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.provider.Settings;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
@@ -217,22 +218,28 @@ public class IntervalTimerActionActivity extends AppCompatActivity {
     public void openIntervalTimer(View view){
         CDT.cancel();
         Intent activity = new Intent(this, IntervalTimerActivity.class);
+        activity.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
         startActivity(activity);
     }
 
     public void openTimer(View view){
         CDT.cancel();
         Intent activity = new Intent(this, Timer.class);
+        activity.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
         startActivity(activity);
     }
 
-    public void openExercises(View view){
+    public void openExercises(View view){CDT.cancel();
         CDT.cancel();
         Intent activity = new Intent(this, Exercises.class);
+        activity.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
         startActivity(activity);
     }
     public void opeSettings(View view){
         CDT.cancel();
+        Intent activity = new Intent(this, Settings.class);
+        activity.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
+        startActivity(activity);
     }
 
     public void chooseSound(String alarm) {

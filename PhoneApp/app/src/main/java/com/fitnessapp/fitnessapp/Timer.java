@@ -75,10 +75,12 @@ public class Timer extends AppCompatActivity {
 
     public void openIntervalTimer(View view){
         Intent activity = new Intent(this, IntervalTimerActivity.class);
+        activity.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
         startActivity(activity);
     }
     public void openTimer(View view){
         Intent activity = new Intent(this, Timer.class);
+        activity.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
         startActivity(activity);
     }
     public void openTimerStarted(View view) {
@@ -86,6 +88,7 @@ public class Timer extends AppCompatActivity {
             Intent activity = new Intent(this, TimerStarted.class);
             activity.putExtra(EXTRA_MINUTES, minutes);
             activity.putExtra(EXTRA_SECONDS, seconds);
+            activity.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
             startActivity(activity);
         }
         else if(seconds<=0 && minutes<=0) {

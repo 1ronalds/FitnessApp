@@ -101,18 +101,30 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
-            <ImageButton
+            <Button
                 android:id="@+id/imageButton2"
-                android:layout_width="wrap_content"
-                android:layout_height="35dp"
-                android:layout_weight="1"
-                android:backgroundTint="@color/white"
+                android:layout_width="36dp"
+                android:layout_height="wrap_content"
+                android:backgroundTint="#BCBBBB"
+                android:includeFontPadding="false"
                 android:onClick="subtractSets"
-                app:srcCompat="@drawable/ic_minus" />
+                android:padding="0px"
+                android:paddingStart="0px"
+                android:paddingLeft="0px"
+                android:paddingTop="0px"
+                android:paddingEnd="0px"
+                android:paddingRight="0px"
+                android:paddingBottom="0px"
+                android:text="-"
+                android:textAlignment="center"
+                android:textColor="#000000"
+                android:textSize="30sp"
+                app:cornerRadius="100px"
+                app:iconPadding="0px" />
 
             <TextView
                 android:id="@+id/textView4"
-                android:layout_width="97dp"
+                android:layout_width="266dp"
                 android:layout_height="35dp"
                 android:layout_weight="1"
                 android:fontFamily="@font/inter_regular"
@@ -122,14 +134,27 @@
                 android:textSize="25sp"
                 android:textStyle="bold" />
 
-            <ImageButton
+            <Button
                 android:id="@+id/imageButton3"
-                android:layout_width="wrap_content"
-                android:layout_height="35dp"
-                android:layout_weight="1"
-                android:backgroundTint="@color/white"
+                android:layout_width="36dp"
+                android:layout_height="wrap_content"
+                android:backgroundTint="#BCBBBB"
+                android:includeFontPadding="false"
                 android:onClick="addSets"
-                app:srcCompat="@drawable/ic_plus" />
+                android:padding="0px"
+                android:paddingStart="0px"
+                android:paddingLeft="0px"
+                android:paddingTop="0px"
+                android:paddingEnd="0px"
+                android:paddingRight="0px"
+                android:paddingBottom="0px"
+                android:text="+"
+                android:textAlignment="center"
+                android:textColor="#000000"
+                android:textSize="30sp"
+                app:cornerRadius="100px"
+                app:iconPadding="0px" />
+
         </LinearLayout>
 
         <TextView
@@ -147,14 +172,26 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
-            <ImageButton
+            <Button
                 android:id="@+id/imageButton4"
-                android:layout_width="wrap_content"
-                android:layout_height="35dp"
-                android:layout_weight="1"
-                android:backgroundTint="@color/white"
+                android:layout_width="36dp"
+                android:layout_height="wrap_content"
+                android:backgroundTint="#BCBBBB"
+                android:includeFontPadding="false"
                 android:onClick="removeWorkTime"
-                app:srcCompat="@drawable/ic_minus" />
+                android:padding="0px"
+                android:paddingStart="0px"
+                android:paddingLeft="0px"
+                android:paddingTop="0px"
+                android:paddingEnd="0px"
+                android:paddingRight="0px"
+                android:paddingBottom="0px"
+                android:text="-"
+                android:textAlignment="center"
+                android:textColor="#000000"
+                android:textSize="30sp"
+                app:cornerRadius="100px"
+                app:iconPadding="0px" />
 
             <TextView
                 android:id="@+id/textView7"
@@ -168,14 +205,26 @@
                 android:textSize="25sp"
                 android:textStyle="bold" />
 
-            <ImageButton
+            <Button
                 android:id="@+id/imageButton5"
-                android:layout_width="wrap_content"
-                android:layout_height="35dp"
-                android:layout_weight="1"
-                android:backgroundTint="@color/white"
+                android:layout_width="36dp"
+                android:layout_height="wrap_content"
+                android:backgroundTint="#BCBBBB"
+                android:includeFontPadding="false"
                 android:onClick="addWorkTime"
-                app:srcCompat="@drawable/ic_plus" />
+                android:padding="0px"
+                android:paddingStart="0px"
+                android:paddingLeft="0px"
+                android:paddingTop="0px"
+                android:paddingEnd="0px"
+                android:paddingRight="0px"
+                android:paddingBottom="0px"
+                android:text="+"
+                android:textAlignment="center"
+                android:textColor="#000000"
+                android:textSize="30sp"
+                app:cornerRadius="100px"
+                app:iconPadding="0px" />
 
         </LinearLayout>
 
@@ -194,14 +243,26 @@
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
-            <ImageButton
+            <Button
                 android:id="@+id/imageButton6"
-                android:layout_width="wrap_content"
-                android:layout_height="35dp"
-                android:layout_weight="1"
-                android:backgroundTint="@color/white"
+                android:layout_width="36dp"
+                android:layout_height="wrap_content"
+                android:backgroundTint="#BCBBBB"
+                android:includeFontPadding="false"
                 android:onClick="removeRestTime"
-                app:srcCompat="@drawable/ic_minus" />
+                android:padding="0px"
+                android:paddingStart="0px"
+                android:paddingLeft="0px"
+                android:paddingTop="0px"
+                android:paddingEnd="0px"
+                android:paddingRight="0px"
+                android:paddingBottom="0px"
+                android:text="-"
+                android:textAlignment="center"
+                android:textColor="#000000"
+                android:textSize="30sp"
+                app:cornerRadius="100px"
+                app:iconPadding="0px" />
 
             <TextView
                 android:id="@+id/textView10"
@@ -215,14 +276,27 @@
                 android:textSize="25sp"
                 android:textStyle="bold" />
 
-            <ImageButton
+            <Button
                 android:id="@+id/imageButton7"
-                android:layout_width="wrap_content"
-                android:layout_height="35dp"
-                android:layout_weight="1"
-                android:backgroundTint="@color/white"
+                android:layout_width="36dp"
+                android:layout_height="wrap_content"
+                android:backgroundTint="#BCBBBB"
+                android:includeFontPadding="false"
                 android:onClick="addRestTime"
-                app:srcCompat="@drawable/ic_plus" />
+                android:padding="0px"
+                android:paddingStart="0px"
+                android:paddingLeft="0px"
+                android:paddingTop="0px"
+                android:paddingEnd="0px"
+                android:paddingRight="0px"
+                android:paddingBottom="0px"
+                android:text="+"
+                android:textAlignment="center"
+                android:textColor="#000000"
+                android:textSize="30sp"
+                app:cornerRadius="100px"
+                app:iconPadding="0px" />
+
         </LinearLayout>
 
         <Space
@@ -260,7 +334,8 @@
                 android:textColor="#000000"
                 android:textSize="40sp"
                 app:cornerRadius="50dp"
-                app:iconPadding="0dp" />
+                app:iconPadding="0dp"
+                app:rippleColor="#000000" />
 
             <Space
                 android:layout_width="80dp"

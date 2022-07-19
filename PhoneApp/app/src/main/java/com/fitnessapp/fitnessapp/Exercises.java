@@ -11,7 +11,6 @@ import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.graphics.Typeface;
 import android.os.Bundle;
-import android.view.Gravity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -44,8 +43,6 @@ public class Exercises extends AppCompatActivity {
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
         setContentView(R.layout.activity_exercises);
-
-
 
         SharedPreferences sharedpreferences = getSharedPreferences("Settings", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedpreferences.edit();
@@ -101,16 +98,22 @@ public class Exercises extends AppCompatActivity {
             ImageView imgv = new ImageView(this);
             TextView titlev = new TextView(this);
             titlev.setTypeface(null, Typeface.BOLD);
-            titlev.setGravity(Gravity.CENTER);
-            titlev.setTextSize(0, 65);
+            titlev.setTextSize(0, 70);
             TextView descriptionv = new TextView(this);
             descriptionv.setTypeface(null, Typeface.NORMAL);
+            descriptionv.setTextSize(0, 70);
+            if(theme.equals("Light")){
+                titlev.setTextColor(Color.BLACK);
+                descriptionv.setTextColor(Color.BLACK);
+            } else {
+                titlev.setTextColor(Color.WHITE);
+                descriptionv.setTextColor(Color.WHITE);
+            }
             Glide.with(this).load(img).into(imgv);
             ll.addView(imgv);
             titlev.setText(title);
             ll.addView(titlev);
             descriptionv.setText(description + "\n\n\n\n\n");
-            descriptionv.setTextSize(0, 50);
             ll.addView(descriptionv);
         }
     }

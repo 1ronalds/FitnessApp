@@ -7,8 +7,11 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
+import android.media.AudioAttributes;
 import android.media.AudioManager;
+import android.media.SoundPool;
 import android.media.ToneGenerator;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.View;
@@ -26,6 +29,9 @@ public class IntervalTimerActionActivity extends AppCompatActivity {
     public boolean isWorkTime = true;
     public boolean isRestTime = false;
     public int setsCount=1;
+
+    private SoundPool soundpool;
+    private int tone;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,6 +71,22 @@ public class IntervalTimerActionActivity extends AppCompatActivity {
             btn4.setBackgroundTintList(ColorStateList.valueOf((Color.parseColor("#000000"))));
 
         }
+
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            AudioAttributes audioatribbutes = new AudioAttributes.Builder()
+                    .setUsage(AudioAttributes.USAGE_ALARM)
+                    .setContentType(AudioAttributes.CONTENT_TYPE_SONIFICATION)
+                    .build();
+            soundpool = new SoundPool.Builder()
+                    .setMaxStreams(1)
+                    .setAudioAttributes(audioatribbutes)
+                    .build();
+        }
+        else {
+            soundpool = new SoundPool(1, AudioManager.STREAM_MUSIC, 0);
+        }
+        chooseSound(alarm);
+
         TextView tw = findViewById(R.id.textView);
         TextView tw2 = (TextView) findViewById(R.id.textView3);
         TextView tw3 = (TextView) findViewById(R.id.textViewSets);
@@ -117,8 +139,7 @@ public class IntervalTimerActionActivity extends AppCompatActivity {
 
                 @Override
                 public void onFinish() {
-                    ToneGenerator toneGen1 = new ToneGenerator(AudioManager.STREAM_MUSIC, 100);
-                    toneGen1.startTone(ToneGenerator.TONE_CDMA_MED_PBX_L, 150);
+                    soundpool.play(tone, 1, 1, 0, 0, 1);
                     isWorkTime = false;
                     isRestTime = true;
                     if(setsCount==sets){
@@ -152,8 +173,7 @@ public class IntervalTimerActionActivity extends AppCompatActivity {
 
                 @Override
                 public void onFinish() {
-                    ToneGenerator toneGen1 = new ToneGenerator(AudioManager.STREAM_MUSIC, 100);
-                    toneGen1.startTone(ToneGenerator.TONE_CDMA_MED_PBX_L, 150);
+                    soundpool.play(tone, 1, 1, 0, 0, 1);
                     isWorkTime = true;
                     isRestTime = false;
                     if(setsCount>=sets){
@@ -213,6 +233,51 @@ public class IntervalTimerActionActivity extends AppCompatActivity {
     }
     public void opeSettings(View view){
         CDT.cancel();
+    }
+
+    public void chooseSound(String alarm) {
+        switch (alarm){
+            case "Beep":{
+                tone = soundpool.load(this, R.raw.beep4, 1);
+                break;
+            }
+            case "Alarm long":{
+                tone = soundpool.load(this, R.raw.alarm_long, 1);
+                break;
+            }
+            case "Cat":{
+                tone = soundpool.load(this, R.raw.cat_meow, 1);
+                break;
+            }
+            case "Alarm":{
+                tone = soundpool.load(this, R.raw.coltonmanz__alarm, 1);
+                break;
+            }
+            case "Dog":{
+                tone = soundpool.load(this, R.raw.dog, 1);
+                break;
+            }
+            case "Elephant":{
+                tone = soundpool.load(this, R.raw.elephant, 1);
+                break;
+            }
+            case "Gong":{
+                tone = soundpool.load(this, R.raw.gong, 1);
+                break;
+            }
+            case "Luna bell":{
+                tone = soundpool.load(this, R.raw.luna_bell, 1);
+                break;
+            }
+            case "Rooster":{
+                tone = soundpool.load(this, R.raw.rooster, 1);
+                break;
+            }
+            default:{
+                tone = soundpool.load(this, R.raw.tissman__cool_tone, 1);
+                break;
+            }
+        }
     }
 
 }

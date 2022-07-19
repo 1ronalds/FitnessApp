@@ -291,8 +291,16 @@ public class IntervalTimerActivity extends AppCompatActivity {
         });
         Spinner spin2 = findViewById(R.id.spinner2);
         ArrayList<String>list2 = new ArrayList<>();
-        list2.add("Default");
-        list2.add("Long");
+        list2.add("Beep");
+        list2.add("Alarm long");
+        list2.add("Cat");
+        list2.add("Alarm");
+        list2.add("Dog");
+        list2.add("Elephant");
+        list2.add("Gong");
+        list2.add("Luna bell");
+        list2.add("Rooster");
+        list2.add("Cool tone");
         ArrayAdapter adapter2 = new ArrayAdapter(this, com.google.android.material.R.layout.support_simple_spinner_dropdown_item,list2);
         spin2.setAdapter(adapter2);
         int spinnerPosition2 = adapter2.getPosition(alarm);

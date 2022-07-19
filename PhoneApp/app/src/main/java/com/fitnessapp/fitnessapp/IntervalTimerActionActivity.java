@@ -119,7 +119,7 @@ public class IntervalTimerActionActivity extends AppCompatActivity {
               pauseStartTimer(restSec, workSec, sets, tw, tw2, tw3);
             }
         });
-
+        getWindow().setWindowAnimations(0);
     }
 
     public void timer(int restSec, int workSec, int sets, TextView tw, TextView tw2, TextView tw3){

@@ -30,5 +30,6 @@ public class MainActivity extends AppCompatActivity {
         Intent activity = new Intent(this, Timer.class);
         activity.addFlags(Intent.FLAG_ACTIVITY_NO_ANIMATION);
         startActivity(activity);
+        getWindow().setWindowAnimations(0);
     }
 }

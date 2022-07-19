@@ -78,7 +78,7 @@ public class IntervalTimerActivity extends AppCompatActivity {
             btn4.setColorFilter(Color.parseColor("#FFFFFF"));
             btn4.setBackgroundTintList(ColorStateList.valueOf((Color.parseColor("#000000"))));
         }
-
+        getWindow().setWindowAnimations(0);
     }
 
     public void openIntervalTimer(View view){

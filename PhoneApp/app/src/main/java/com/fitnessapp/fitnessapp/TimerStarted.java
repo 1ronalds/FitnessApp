@@ -118,7 +118,7 @@ public class TimerStarted extends AppCompatActivity {
             }
 
         }.start();
-
+        getWindow().setWindowAnimations(0);
     }
     public void openTimer(View view){
         CDT.cancel();

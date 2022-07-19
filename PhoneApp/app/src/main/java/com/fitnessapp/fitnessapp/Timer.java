@@ -228,12 +228,7 @@ public class Timer extends AppCompatActivity {
         list2.add("Beep");
         list2.add("Alarm long");
         list2.add("Cat");
-        list2.add("Alarm");
-        list2.add("Dog");
-        list2.add("Elephant");
         list2.add("Gong");
-        list2.add("Luna bell");
-        list2.add("Rooster");
         list2.add("Cool tone");
         ArrayAdapter adapter2 = new ArrayAdapter(this, com.google.android.material.R.layout.support_simple_spinner_dropdown_item,list2);
         spin2.setAdapter(adapter2);

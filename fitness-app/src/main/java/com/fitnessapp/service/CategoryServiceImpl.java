@@ -14,28 +14,26 @@ import com.fitnessapp.repository.CategoryRepository;
 @Service
 public class CategoryServiceImpl implements CategoryService {
 
-	@Autowired 
-	CategoryRepository categoryRepository;
+    @Autowired
+    CategoryRepository categoryRepository;
 
-	@Override
-	public List<Category> getAllCategories() {
-		return categoryRepository.findAll();
-		
-	}
+    @Override
+    public List<Category> getAllCategories() {
+        return categoryRepository.findAll();
 
-	@Override
-	public Category save(CategoryDto categoryDto) {
-		Category category = Category.builder().name(categoryDto.getName()).description(categoryDto.getDescription()).build();
-		return categoryRepository.save(category);
-	}
+    }
 
+    @Override
+    public Category save(CategoryDto categoryDto) {
+        Category category = Category.builder().name(categoryDto.getName()).description(categoryDto.getDescription()).build();
+        return categoryRepository.save(category);
+    }
 
-	@Override
-	public Category findById(Long id) {
-		Optional<Category> optionalCategory = categoryRepository.findById(id);
-		if (optionalCategory.isEmpty())
-			throw new RecordNotFoundExceptionObject("Category not find by id : " + id);
-		return optionalCategory.get();
-	}
-	
+    @Override
+    public Category findById(Long id) {
+        Optional<Category> optionalCategory = categoryRepository.findById(id);
+        if (optionalCategory.isEmpty())
+            throw new RecordNotFoundExceptionObject("Category not find by id : " + id);
+        return optionalCategory.get();
+    }
 }

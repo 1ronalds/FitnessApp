@@ -9,12 +9,10 @@ import lombok.NoArgsConstructor;
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-
 public class ExerciseDto {
-
 	private long id;
 	private long categoryId;
 	private String name;
 	private String description;
-	
+	private String image;
 }

@@ -48,13 +48,13 @@ public class IntervalTimerActionActivity extends AppCompatActivity {
         String theme = getSharedPreferences("Settings", Context.MODE_PRIVATE).getString("theme", null);
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            AudioAttributes audioatribbutes = new AudioAttributes.Builder()
-                    .setUsage(AudioAttributes.USAGE_ALARM)
+            AudioAttributes audioatributes = new AudioAttributes.Builder()
+                    .setUsage(AudioAttributes.USAGE_ASSISTANCE_SONIFICATION)
                     .setContentType(AudioAttributes.CONTENT_TYPE_SONIFICATION)
                     .build();
             soundpool = new SoundPool.Builder()
                     .setMaxStreams(1)
-                    .setAudioAttributes(audioatribbutes)
+                    .setAudioAttributes(audioatributes)
                     .build();
         }
         else {
@@ -116,7 +116,7 @@ public class IntervalTimerActionActivity extends AppCompatActivity {
                 @Override
                 public void onFinish() {
                     soundpool.play(tone, 1, 1, 0, 0, 1);
-                    soundpool.autoPause();
+                    //soundpool.autoPause();
                     isWorkTime = false;
                     isRestTime = true;
                     if(setsCount==sets){
@@ -151,7 +151,7 @@ public class IntervalTimerActionActivity extends AppCompatActivity {
                 @Override
                 public void onFinish() {
                     soundpool.play(tone, 1, 1, 0, 0, 1);
-                    soundpool.autoPause();
+                    //soundpool.autoPause();
                     isWorkTime = true;
                     isRestTime = false;
                     if(setsCount>=sets){
@@ -217,62 +217,42 @@ public class IntervalTimerActionActivity extends AppCompatActivity {
         switch (alarm){
             case "Beep":{
                 tone = soundpool.load(this, R.raw.beep4, 1);
-                soundpool.play(tone, 1, 1, 0, 0, 1);
-                soundpool.autoPause();
                 break;
             }
             case "Alarm long":{
                 tone = soundpool.load(this, R.raw.alarm_long, 1);
-                soundpool.play(tone, 1, 1, 0, 0, 1);
-                soundpool.autoPause();
                 break;
             }
             case "Cat":{
                 tone = soundpool.load(this, R.raw.cat_meow, 1);
-                soundpool.play(tone, 1, 1, 0, 0, 1);
-                soundpool.autoPause();
                 break;
             }
             case "Alarm":{
                 tone = soundpool.load(this, R.raw.coltonmanz__alarm, 1);
-                soundpool.play(tone, 1, 1, 0, 0, 1);
-                soundpool.autoPause();
                 break;
             }
             case "Dog":{
                 tone = soundpool.load(this, R.raw.dog, 1);
-                soundpool.play(tone, 1, 1, 0, 0, 1);
-                soundpool.autoPause();
                 break;
             }
             case "Elephant":{
                 tone = soundpool.load(this, R.raw.elephant, 1);
-                soundpool.play(tone, 1, 1, 0, 0, 1);
-                soundpool.autoPause();
                 break;
             }
             case "Gong":{
                 tone = soundpool.load(this, R.raw.gong, 1);
-                soundpool.play(tone, 1, 1, 0, 0, 1);
-                soundpool.autoPause();
                 break;
             }
             case "Luna bell":{
                 tone = soundpool.load(this, R.raw.luna_bell, 1);
-                soundpool.play(tone, 1, 1, 0, 0, 1);
-                soundpool.autoPause();
                 break;
             }
             case "Rooster":{
                 tone = soundpool.load(this, R.raw.rooster, 1);
-                soundpool.play(tone, 1, 1, 0, 0, 1);
-                soundpool.autoPause();
                 break;
             }
-            case "Cool tone":{
+            default:{
                 tone = soundpool.load(this, R.raw.tissman__cool_tone, 1);
-                soundpool.play(tone, 1, 1, 0, 0, 1);
-                soundpool.autoPause();
                 break;
             }
         }

@@ -91,7 +91,7 @@ public class TimerStarted extends AppCompatActivity {
             public void onFinish(){
                 tw.setText("0 : 00");
                 soundpool.play(tone, 1, 1, 0, 0, 1);
-                soundpool.autoPause();
+                //soundpool.autoPause();
                 startActivity(activity);
             }
 
@@ -122,62 +122,42 @@ public class TimerStarted extends AppCompatActivity {
         switch (alarm){
             case "Beep":{
                 tone = soundpool.load(this, R.raw.beep4, 1);
-                soundpool.play(tone, 1, 1, 0, 0, 1);
-                soundpool.autoPause();
                 break;
             }
             case "Alarm long":{
                 tone = soundpool.load(this, R.raw.alarm_long, 1);
-                soundpool.play(tone, 1, 1, 0, 0, 1);
-                soundpool.autoPause();
                 break;
             }
             case "Cat":{
                 tone = soundpool.load(this, R.raw.cat_meow, 1);
-                soundpool.play(tone, 1, 1, 0, 0, 1);
-                soundpool.autoPause();
                 break;
             }
             case "Alarm":{
                 tone = soundpool.load(this, R.raw.coltonmanz__alarm, 1);
-                soundpool.play(tone, 1, 1, 0, 0, 1);
-                soundpool.autoPause();
                 break;
             }
             case "Dog":{
                 tone = soundpool.load(this, R.raw.dog, 1);
-                soundpool.play(tone, 1, 1, 0, 0, 1);
-                soundpool.autoPause();
                 break;
             }
             case "Elephant":{
                 tone = soundpool.load(this, R.raw.elephant, 1);
-                soundpool.play(tone, 1, 1, 0, 0, 1);
-                soundpool.autoPause();
                 break;
             }
             case "Gong":{
                 tone = soundpool.load(this, R.raw.gong, 1);
-                soundpool.play(tone, 1, 1, 0, 0, 1);
-                soundpool.autoPause();
                 break;
             }
             case "Luna bell":{
                 tone = soundpool.load(this, R.raw.luna_bell, 1);
-                soundpool.play(tone, 1, 1, 0, 0, 1);
-                soundpool.autoPause();
                 break;
             }
             case "Rooster":{
                 tone = soundpool.load(this, R.raw.rooster, 1);
-                soundpool.play(tone, 1, 1, 0, 0, 1);
-                soundpool.autoPause();
                 break;
             }
-            case "Cool tone":{
+            default:{
                 tone = soundpool.load(this, R.raw.tissman__cool_tone, 1);
-                soundpool.play(tone, 1, 1, 0, 0, 1);
-                soundpool.autoPause();
                 break;
             }
         }

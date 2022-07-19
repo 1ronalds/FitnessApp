@@ -61,7 +61,7 @@
             android:layout_weight="1"
             android:backgroundTint="@color/white"
             android:onClick="openSettings"
-            android:tint="#000000"
+            android:tint="@color/black"
             app:srcCompat="@drawable/ic_settings" />
 
     </LinearLayout>

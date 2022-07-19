@@ -99,9 +99,9 @@ public class TimerStarted extends AppCompatActivity {
 
     }
     public void openTimer(View view){
+        CDT.cancel();
         Intent activity = new Intent(this, Timer.class);
         startActivity(activity);
-        CDT.cancel();
     }
     public void pause(View view){
         CDT.cancel();

@@ -211,17 +211,19 @@ public class IntervalTimerActivity extends AppCompatActivity {
             intent.putExtra("rSec", restSeconds);
             startActivity(intent);
         }
-        else if (sets == 0) {
-            TextView tw = (TextView) findViewById(R.id.textView4);
-            tw.setTextColor(getResources().getColor(R.color.red));
-        }
-        else if (workSeconds == 0) {
-            TextView tw2 = (TextView) findViewById(R.id.textView7);
-            tw2.setTextColor(getResources().getColor(R.color.red));
-        }
-        else if (restSeconds == 0) {
-            TextView tw3 = (TextView) findViewById(R.id.textView10);
-            tw3.setTextColor(getResources().getColor(R.color.red));
+        else {
+            if (sets == 0) {
+                TextView tw = (TextView) findViewById(R.id.textView4);
+                tw.setTextColor(getResources().getColor(R.color.red));
+            }
+            if (workSeconds == 0) {
+                TextView tw2 = (TextView) findViewById(R.id.textView7);
+                tw2.setTextColor(getResources().getColor(R.color.red));
+            }
+            if (restSeconds == 0) {
+                TextView tw3 = (TextView) findViewById(R.id.textView10);
+                tw3.setTextColor(getResources().getColor(R.color.red));
+            }
         }
     }
 

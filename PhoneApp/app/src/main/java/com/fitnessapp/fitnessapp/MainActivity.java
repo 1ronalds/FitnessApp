@@ -9,6 +9,8 @@ import android.os.Bundle;
 
 public class MainActivity extends AppCompatActivity {
 
+    // Works well on screen Pixel XL
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

@@ -20,6 +20,8 @@ import android.widget.ImageButton;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import org.w3c.dom.Text;
+
 public class IntervalTimerActionActivity extends AppCompatActivity {
     private CountDownTimer CDT;
     public Button pauseStartTimer;
@@ -57,13 +59,13 @@ public class IntervalTimerActionActivity extends AppCompatActivity {
             TextView tw3 = (TextView) findViewById(R.id.textViewSets);
             tw3.setBackgroundColor(Color.parseColor("#000000"));
             tw3.setTextColor(Color.parseColor("#FFFFFF"));
-            Button btn1 = (Button) findViewById(R.id.timerBtn);
+            TextView btn1 = (TextView) findViewById(R.id.timerBtn);
             btn1.setBackgroundTintList(ColorStateList.valueOf((Color.parseColor("#000000"))));
             btn1.setTextColor(Color.parseColor("#FFFFFF"));
-            Button btn2 = (Button) findViewById(R.id.intervalTimerBtn);
+            TextView btn2 = (TextView) findViewById(R.id.intervalTimerBtn);
             btn2.setBackgroundTintList(ColorStateList.valueOf((Color.parseColor("#000000"))));
             btn2.setTextColor(Color.parseColor("#FFFFFF"));
-            Button btn3 = (Button) findViewById(R.id.exercisesBtn);
+            TextView btn3 = (TextView) findViewById(R.id.exercisesBtn);
             btn3.setBackgroundTintList(ColorStateList.valueOf((Color.parseColor("#000000"))));
             btn3.setTextColor(Color.parseColor("#FFFFFF"));
             ImageButton btn4 = (ImageButton) findViewById(R.id.settingsButton);

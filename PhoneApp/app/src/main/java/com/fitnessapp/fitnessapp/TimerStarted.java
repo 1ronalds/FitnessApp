@@ -91,7 +91,6 @@ public class TimerStarted extends AppCompatActivity {
             public void onFinish(){
                 tw.setText("0 : 00");
                 soundpool.play(tone, 1, 1, 0, 0, 1);
-                //soundpool.autoPause();
                 startActivity(activity);
             }
 

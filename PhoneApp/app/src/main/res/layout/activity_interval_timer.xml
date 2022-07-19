@@ -9,7 +9,7 @@
     tools:context=".IntervalTimerActivity">
 
     <LinearLayout
-        android:layout_width="wrap_content"
+        android:layout_width="390dp"
         android:layout_height="match_parent"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -19,54 +19,64 @@
 
         <LinearLayout
             android:id="@+id/linearLayout2"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:gravity="center"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:gravity="top"
             android:orientation="horizontal"
             android:paddingTop="16dp"
+            android:paddingBottom="16dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
-            <Button
+            <TextView
                 android:id="@+id/timerBtn"
-                style="@style/CButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:onClick="openTimer"
                 android:text="Timer"
-                android:textSize="16sp" />
+                android:textAlignment="center"
+                android:textColor="#000000"
+                android:textSize="16sp"
+                app:autoSizeTextType="uniform" />
 
-            <Button
+            <TextView
                 android:id="@+id/intervalTimerBtn"
-                style="@style/CButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:fontFamily="@font/inter_bold"
-                android:onClick="openIntervalTimer"
                 android:text="Interval timer"
-                android:textSize="16sp" />
+                android:textAlignment="center"
+                android:textColor="#000000"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                app:autoSizeTextType="uniform" />
 
-            <Button
+            <TextView
                 android:id="@+id/exercisesBtn"
-                style="@style/CButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:onClick="openExercises"
                 android:text="Exercises"
-                android:textSize="16sp" />
+                android:textAlignment="center"
+                android:textColor="#000000"
+                android:textSize="16sp"
+                app:autoSizeTextType="uniform" />
 
             <ImageButton
                 android:id="@+id/settingsButton"
-                android:layout_width="48dp"
-                android:layout_height="48dp"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
                 android:layout_weight="1"
                 android:backgroundTint="@color/white"
                 android:onClick="openSettings"
-                app:srcCompat="@drawable/ic_settings" />
+                app:srcCompat="@drawable/ic_settings"
+                app:tint="#000000" />
 
         </LinearLayout>
 

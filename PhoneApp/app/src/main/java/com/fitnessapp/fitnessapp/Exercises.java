@@ -51,13 +51,13 @@ public class Exercises extends AppCompatActivity {
         if(theme.equals("Dark")) {
             RelativeLayout rl = (RelativeLayout) findViewById(R.id.rl);
             rl.setBackgroundColor(Color.parseColor("#000000"));
-            Button btn1 = (Button) findViewById(R.id.timerBtn);
+            TextView btn1 = (TextView) findViewById(R.id.timerBtn);
             btn1.setBackgroundTintList(ColorStateList.valueOf((Color.parseColor("#000000"))));
             btn1.setTextColor(Color.parseColor("#FFFFFF"));
-            Button btn2 = (Button) findViewById(R.id.intervalTimerBtn);
+            TextView btn2 = (TextView) findViewById(R.id.intervalTimerBtn);
             btn2.setBackgroundTintList(ColorStateList.valueOf((Color.parseColor("#000000"))));
             btn2.setTextColor(Color.parseColor("#FFFFFF"));
-            Button btn3 = (Button) findViewById(R.id.exercisesBtn);
+            TextView btn3 = (TextView) findViewById(R.id.exercisesBtn);
             btn3.setBackgroundTintList(ColorStateList.valueOf((Color.parseColor("#000000"))));
             btn3.setTextColor(Color.parseColor("#FFFFFF"));
             ImageButton btn4 = (ImageButton) findViewById(R.id.settingsButton);

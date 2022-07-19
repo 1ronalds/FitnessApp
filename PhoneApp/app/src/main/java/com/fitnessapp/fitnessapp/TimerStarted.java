@@ -118,44 +118,24 @@ public class TimerStarted extends AppCompatActivity {
     }
 
     public void chooseSound(String alarm) {
-        switch (alarm){
-            case "Beep":{
+        switch (alarm) {
+            case "Beep": {
                 tone = soundpool.load(this, R.raw.beep4, 1);
                 break;
             }
-            case "Alarm long":{
+            case "Alarm long": {
                 tone = soundpool.load(this, R.raw.alarm_long, 1);
                 break;
             }
-            case "Cat":{
+            case "Cat": {
                 tone = soundpool.load(this, R.raw.cat_meow, 1);
                 break;
             }
-            case "Alarm":{
-                tone = soundpool.load(this, R.raw.coltonmanz__alarm, 1);
-                break;
-            }
-            case "Dog":{
-                tone = soundpool.load(this, R.raw.dog, 1);
-                break;
-            }
-            case "Elephant":{
-                tone = soundpool.load(this, R.raw.elephant, 1);
-                break;
-            }
-            case "Gong":{
+            case "Gong": {
                 tone = soundpool.load(this, R.raw.gong, 1);
                 break;
             }
-            case "Luna bell":{
-                tone = soundpool.load(this, R.raw.luna_bell, 1);
-                break;
-            }
-            case "Rooster":{
-                tone = soundpool.load(this, R.raw.rooster, 1);
-                break;
-            }
-            default:{
+            default: {
                 tone = soundpool.load(this, R.raw.tissman__cool_tone, 1);
                 break;
             }

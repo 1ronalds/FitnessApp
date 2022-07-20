@@ -19,6 +19,8 @@
         <activity
             android:name=".TimerStarted"
             android:exported="false" />
+
+        
         <activity
             android:name=".IntervalTimerActionActivity"
             android:exported="false" />

@@ -6,6 +6,7 @@ import androidx.constraintlayout.widget.ConstraintLayout;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.ActivityInfo;
 import android.content.res.ColorStateList;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
@@ -40,6 +41,7 @@ public class Exercises extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
         setContentView(R.layout.activity_exercises);
@@ -99,10 +101,10 @@ public class Exercises extends AppCompatActivity {
             ImageView imgv = new ImageView(this);
             TextView titlev = new TextView(this);
             titlev.setTypeface(null, Typeface.BOLD);
-            titlev.setTextSize(0, 70);
+            titlev.setTextSize(0, 50);
             TextView descriptionv = new TextView(this);
             descriptionv.setTypeface(null, Typeface.NORMAL);
-            descriptionv.setTextSize(0, 70);
+            descriptionv.setTextSize(0, 50);
             if(theme.equals("Light")){
                 titlev.setTextColor(Color.BLACK);
                 descriptionv.setTextColor(Color.BLACK);

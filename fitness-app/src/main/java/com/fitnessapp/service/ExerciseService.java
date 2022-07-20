@@ -10,8 +10,10 @@ import org.springframework.web.multipart.MultipartFile;
 public interface ExerciseService {
 
 	List<Exercise> getAllExercises();
-	
+
 	Exercise save(MultipartFile multipartFile, Long categoryId, String name ,String description ) throws IOException;
-	
+
 	Exercise findById(Long id);
+
+	void deleteById(Long id);
 }

@@ -16,7 +16,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 @Service
 public class ExerciseServiceImpl implements ExerciseService {
-	
+
 	@Autowired
 	ExerciseRepository exerciseRepository;
 
@@ -43,5 +43,16 @@ public class ExerciseServiceImpl implements ExerciseService {
 		if (optionalExercise.isEmpty())
 			throw new RecordNotFoundExceptionObject("Task not find by id : " + id);
 		return optionalExercise.get();
+	}
+
+	@Override
+	public void deleteById(Long id){
+		final var exist =exerciseRepository.existsById(id);
+		if (!exist) {
+			throw new RecordNotFoundExceptionObject("Task not find by id : " + id);
+		}
+		else {
+			exerciseRepository.deleteById(id);
+		}
 	}
 }

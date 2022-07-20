@@ -15,6 +15,7 @@ import android.media.ToneGenerator;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.os.Handler;
 import android.provider.Settings;
 import android.view.View;
 import android.widget.Button;
@@ -113,21 +114,32 @@ public class IntervalTimerActionActivity extends AppCompatActivity {
         restartTimer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                resetTimer(restSec, workSec, sets, tw, tw2, tw3);
+                //resetTimer(restSec, workSec, sets, tw, tw2, tw3);
+                openIntervalTimer(view);
             }
         });
 
         pauseStartTimer.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-              pauseStartTimer(restSec, workSec, sets, tw, tw2, tw3);
+                if (setsCount==sets){
+                    pauseStartTimer.setText("II");
+                    resetTimer(restSec, workSec, sets, tw, tw2, tw3);
+                }
+                else pauseStartTimer(restSec, workSec, sets, tw, tw2, tw3);
             }
         });
         getWindow().setWindowAnimations(0);
     }
 
+    @Override
+    public void onBackPressed() {
+        CDT.cancel();
+        super.onBackPressed();
+    }
+
     public void timer(int restSec, int workSec, int sets, TextView tw, TextView tw2, TextView tw3){
-        if (residualTime>0 && isWorkTime == true && setsCount<=sets) {
+        if (residualTime>=0 && isWorkTime == true && setsCount<=sets) {
             isTimerRunning = true;
             CDT = new CountDownTimer(residualTime, 1000) {
                 @Override
@@ -151,6 +163,7 @@ public class IntervalTimerActionActivity extends AppCompatActivity {
                         isTimerRunning = false;
                         tw.setText("Well done!");
                         tw2.setText("Rest");
+                        pauseStartTimer.setText("▶");
                     }
                     else {
                         isWorkTime = false;
@@ -161,7 +174,7 @@ public class IntervalTimerActionActivity extends AppCompatActivity {
                 }
             }.start();
         }
-        else if (residualTime>0 && isRestTime==true && setsCount<sets){
+        else if (residualTime>=0 && isRestTime==true && setsCount<sets){
             isTimerRunning = true;
             CDT = new CountDownTimer(residualTime, 1000) {
                 @Override
@@ -185,6 +198,7 @@ public class IntervalTimerActionActivity extends AppCompatActivity {
                         isTimerRunning = false;
                         tw.setText("Well done!");
                         tw2.setText("Rest");
+                        pauseStartTimer.setText("▶");
                     }
                     else {
                         setsCount+=1;

@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.ActivityInfo;
 import android.os.Bundle;
+import android.os.Handler;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -20,6 +21,10 @@ public class MainActivity extends AppCompatActivity {
         ActionBar actionBar = getSupportActionBar();
         actionBar.hide();
 
+        Handler handler = new Handler();
+        handler.postDelayed(new Runnable(){
+            public void run(){}
+        },3000);
         SharedPreferences sharedpreferences = getSharedPreferences("Settings", Context.MODE_PRIVATE);
         SharedPreferences.Editor editor = sharedpreferences.edit();
         String alarm = getSharedPreferences("Settings", Context.MODE_PRIVATE).getString("alarm", null);

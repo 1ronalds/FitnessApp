@@ -3,6 +3,8 @@ package com.fitnessapp.fitnessapp;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
+import androidx.core.app.ActivityCompat;
+
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -66,6 +68,12 @@ public class Timer extends AppCompatActivity {
             btn4.setBackgroundTintList(ColorStateList.valueOf((Color.parseColor("#000000"))));
         }
         getWindow().setWindowAnimations(0);
+    }
+
+    @Override
+    public void onBackPressed() {
+        ActivityCompat.finishAffinity(this);
+        super.onBackPressed();
     }
 
     public void openExercises(View view) {

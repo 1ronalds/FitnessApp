@@ -122,6 +122,13 @@ public class TimerStarted extends AppCompatActivity {
         }.start();
         getWindow().setWindowAnimations(0);
     }
+
+    @Override
+    public void onBackPressed() {
+        CDT.cancel();
+        super.onBackPressed();
+    }
+
     public void openTimer(View view){
         CDT.cancel();
         Intent activity = new Intent(this, Timer.class);

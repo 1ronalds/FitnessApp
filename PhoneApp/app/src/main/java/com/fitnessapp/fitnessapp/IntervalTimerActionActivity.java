@@ -164,6 +164,12 @@ public class IntervalTimerActionActivity extends AppCompatActivity {
                         tw.setText("Well done!");
                         tw2.setText("Rest");
                         pauseStartTimer.setText("▶");
+                        Handler handler = new Handler();
+                        handler.postDelayed(new Runnable() {
+                            public void run() {
+                                onBackPressed();
+                            }
+                        }, 5000);
                     }
                     else {
                         isWorkTime = false;
@@ -199,6 +205,12 @@ public class IntervalTimerActionActivity extends AppCompatActivity {
                         tw.setText("Well done!");
                         tw2.setText("Rest");
                         pauseStartTimer.setText("▶");
+                        Handler handler = new Handler();
+                        handler.postDelayed(new Runnable() {
+                            public void run() {
+                                onBackPressed();
+                            }
+                        }, 5000);
                     }
                     else {
                         setsCount+=1;

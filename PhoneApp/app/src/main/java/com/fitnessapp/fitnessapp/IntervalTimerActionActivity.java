@@ -167,9 +167,10 @@ public class IntervalTimerActionActivity extends AppCompatActivity {
                         Handler handler = new Handler();
                         handler.postDelayed(new Runnable() {
                             public void run() {
-                                onBackPressed();
+                                Intent activity = new Intent(IntervalTimerActionActivity.this, IntervalTimerActivity.class);
+                                startActivity(activity);
                             }
-                        }, 5000);
+                        }, 3000);
                     }
                     else {
                         isWorkTime = false;
@@ -208,9 +209,10 @@ public class IntervalTimerActionActivity extends AppCompatActivity {
                         Handler handler = new Handler();
                         handler.postDelayed(new Runnable() {
                             public void run() {
-                                onBackPressed();
+                                Intent activity = new Intent(IntervalTimerActionActivity.this, IntervalTimerActivity.class);
+                                startActivity(activity);
                             }
-                        }, 5000);
+                        }, 3000);
                     }
                     else {
                         setsCount+=1;

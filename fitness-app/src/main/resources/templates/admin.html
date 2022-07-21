@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,17 +13,16 @@
     xmlhttp.onload = function () {
         myObj = JSON.parse(this.responseText);
         for (let i in myObj.exercises) {
-            console.log(myObj.exercises[i]);
             var img = document.createElement("img");
-            img.setAttribute("src", myObj.exercises[i].src);
+            img.setAttribute("src", "http://172.104.252.91:8081" + myObj.exercises[i].image);
             img.setAttribute("width", "300px");
             document.getElementById("posts").appendChild(img);
             var title = document.createElement("p");
-            title.textContent = myObj.exercises[i].title;
+            title.textContent = myObj.exercises[i].name;
             title.style.fontWeight = "bold";
             document.getElementById("posts").appendChild(title);
             var description = document.createElement("p");
-            description.textContent = myObj.exercises[i].text;
+            description.textContent = myObj.exercises[i].description;
             document.getElementById("posts").appendChild(description);
             var p = document.createElement("p");
             var del = document.createElement("button");
@@ -34,17 +34,16 @@
             document.getElementById("posts").appendChild(document.createElement("br"));
         }
     };
-    xmlhttp.open("GET", "/list");
+    xmlhttp.open("GET", "http://172.104.252.91:8081/api/exercise/list");
     xmlhttp.send();
 
     function delf(id) {
         const xmlhttp = new XMLHttpRequest();
         xmlhttp.onload = function () {
+          location.reload(true);
         }
-        xmlhttp.open("DELETE", "/" + id);
+        xmlhttp.open("DELETE", "http://172.104.252.91:8081/api/exercise/" + id);
         xmlhttp.send();
-        location.reload();
-    }
 
 
     }
@@ -52,7 +51,7 @@
 </script>
 <h1>Admin page</h1>
 <div id="posts"></div>
-<form action="/api/exercise/save" method="post" enctype="multipart/form-data">
+<form action="http://172.104.252.91:8081/api/exercise/save" method="post" enctype="multipart/form-data">
     <label for="file">Image:</label><br>
     <input name="image" type="file" id="myFile"><br>
     <label for="fname">Title:</label><br>

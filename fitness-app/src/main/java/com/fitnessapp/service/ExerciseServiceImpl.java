@@ -31,6 +31,7 @@ public class ExerciseServiceImpl implements ExerciseService {
 		String uploadDir = "src/main/webapp/WEB-INF/images/";
 		FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
 		return exerciseRepository.save(Exercise.builder()
+
 				.name(name)
 				.description(description)
 				.image("/images/" + fileName)

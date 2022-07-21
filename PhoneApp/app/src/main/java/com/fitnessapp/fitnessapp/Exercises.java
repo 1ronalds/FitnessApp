@@ -68,7 +68,8 @@ public class Exercises extends AppCompatActivity {
         }
 
         RequestQueue queue = Volley.newRequestQueue(this);
-        JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, "http://172.104.252.91:8081/api/exercise/list",
+        //http://172.104.252.91:8081/api/exercise/list
+        JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, "https://pastebin.com/raw/myqxKXz8",
                 null,
                 new Response.Listener<JSONObject>() {
                     @Override
@@ -113,7 +114,7 @@ public class Exercises extends AppCompatActivity {
                 titlev.setTextColor(Color.WHITE);
                 descriptionv.setTextColor(Color.WHITE);
             }
-            Glide.with(this).load("http://172.104.252.91:8081/" + img).into(imgv);
+            Glide.with(this).load(img).into(imgv);
             ll.addView(imgv);
             titlev.setText(title);
             ll.addView(titlev);

@@ -1,7 +1,5 @@
 package com.fitnessapp.fitnessapp;
 
-import static java.lang.Thread.*;
-
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
@@ -15,7 +13,6 @@ import android.graphics.Color;
 import android.media.AudioAttributes;
 import android.media.AudioManager;
 import android.media.SoundPool;
-import android.media.ToneGenerator;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.CountDownTimer;
@@ -23,8 +20,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
-
-import java.util.TimerTask;
 
 public class TimerStarted extends AppCompatActivity {
     CountDownTimer CDT = null;

@@ -12,10 +12,10 @@ import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.graphics.Typeface;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
@@ -68,7 +68,8 @@ public class Exercises extends AppCompatActivity {
         }
 
         RequestQueue queue = Volley.newRequestQueue(this);
-        JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, "https://pastebin.com/raw/Ehy7BwQT",
+        //http://172.104.252.91:8081/api/exercise/list
+        JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, "https://pastebin.com/raw/myqxKXz8",
                 null,
                 new Response.Listener<JSONObject>() {
                     @Override
@@ -95,9 +96,10 @@ public class Exercises extends AppCompatActivity {
         JSONArray exercises = response.getJSONArray("exercises");
         for (int i = 0; i < exercises.length(); i++){
             JSONObject exercise = exercises.getJSONObject(i);
-            String title = exercise.getString("title");
-            String description = exercise.getString("text");
-            String img = exercise.getString("src");
+            String title = exercise.getString("name");
+            String description = exercise.getString("description");
+            Log.i("dbg-description", description);
+            String img = exercise.getString("image");
             ImageView imgv = new ImageView(this);
             TextView titlev = new TextView(this);
             titlev.setTypeface(null, Typeface.BOLD);

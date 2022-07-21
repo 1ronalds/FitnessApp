@@ -16,40 +16,40 @@ import java.io.IOException;
 @Slf4j
 @CrossOrigin
 @RestController
-@RequestMapping(value = "/api/exercise")
+@RequestMapping(value = "/api")
 
 public class ExerciseController {
     @Autowired
     ExerciseService exerciseService;
 
-    @PostMapping(value = "/save", headers = "Content-Type= multipart/form-data")
+    @PostMapping(value = "/exercise/save", headers = "Content-Type= multipart/form-data")
     public Response save(@RequestParam("image") MultipartFile multipartFile,
-                         @RequestParam("categoryId") Long categoryId,
+                         @RequestParam(value = "categoryId", required = false,  defaultValue = "0") long categoryId,
                          @RequestParam("name") String name,
                          @RequestParam("description") String description) throws IOException {
         return new Response(HttpStatus.OK.value(), exerciseService.save(multipartFile, categoryId, name, description));
     }
 
-    @GetMapping(value = "/list")
+    @GetMapping(value = "/exercise/list")
     public Response findAllCategories() {
         return new Response(HttpStatus.OK.value(), exerciseService.getAllExercises());
     }
 
-    @GetMapping(value = "/{id}")
+    @GetMapping(value = "/exercise/{id}")
     public Response findById(@PathVariable Long id) {
         return new Response(HttpStatus.OK.value(), exerciseService.findById(id));
     }
 
-    @DeleteMapping(value = "/{id}")
+    @DeleteMapping(value = "/exercise/{id}")
     public Response deleteById(@PathVariable Long id) {
         exerciseService.deleteById(id);
         return new Response(HttpStatus.NO_CONTENT.value(), "Successfully deleted");
     }
 
-    @GetMapping(value = "/admin")
+    @GetMapping( "/admin")
     public ModelAndView welcome() {
         ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("index.html");
+        modelAndView.setViewName("admin.html");
         return modelAndView;
     }
 }

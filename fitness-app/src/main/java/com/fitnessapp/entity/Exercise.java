@@ -19,7 +19,7 @@ public class Exercise {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	
 	private long id;
-	private long categoryId; 
+	private long categoryId = 0;
 	private String name;
 	private String description;
 	@Column(nullable = true, length = 64)

@@ -32,7 +32,7 @@ public class CategoryServiceImpl implements CategoryService {
     @Override
     public Category findById(Long id) {
         Optional<Category> optionalCategory = categoryRepository.findById(id);
-        if (optionalCategory.isEmpty())
+        if (!optionalCategory.isPresent())
             throw new RecordNotFoundExceptionObject("Category not find by id : " + id);
         return optionalCategory.get();
     }

@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Admin page</title>
+</head>
+<body>
+<style>
+</style>
+<script>
+    var myObj;
+    const xmlhttp = new XMLHttpRequest();
+    xmlhttp.onload = function () {
+        myObj = JSON.parse(this.responseText);
+        for (let i in myObj.exercises) {
+            console.log(myObj.exercises[i]);
+            var img = document.createElement("img");
+            img.setAttribute("src", myObj.exercises[i].src);
+            img.setAttribute("width", "300px");
+            document.getElementById("posts").appendChild(img);
+            var title = document.createElement("p");
+            title.textContent = myObj.exercises[i].title;
+            title.style.fontWeight = "bold";
+            document.getElementById("posts").appendChild(title);
+            var description = document.createElement("p");
+            description.textContent = myObj.exercises[i].text;
+            document.getElementById("posts").appendChild(description);
+            var p = document.createElement("p");
+            var del = document.createElement("button");
+            del.setAttribute("onClick", "delf(" + myObj.exercises[i].id + ")");
+            del.textContent = "Delete";
+            document.getElementById("posts").appendChild(del);
+            p.textContent = "--------------------------";
+            document.getElementById("posts").appendChild(p);
+            document.getElementById("posts").appendChild(document.createElement("br"));
+        }
+    };
+    xmlhttp.open("GET", "/list");
+    xmlhttp.send();
+
+    function delf(id) {
+        const xmlhttp = new XMLHttpRequest();
+        xmlhttp.onload = function () {
+        }
+        xmlhttp.open("DELETE", "/" + id);
+        xmlhttp.send();
+        location.reload();
+    }
+
+
+    }
+
+</script>
+<h1>Admin page</h1>
+<div id="posts"></div>
+<form action="/api/exercise/save" method="post" enctype="multipart/form-data">
+    <label for="file">Image:</label><br>
+    <input name="image" type="file" id="myFile"><br>
+    <label for="fname">Title:</label><br>
+    <input name="name" type="text" id="title"><br>
+    <label for="fname">Description:</label><br>
+    <input name="description" type="text" id="description"><br>
+    <input type="submit" >
+
+</form>
+</body>
+</html>

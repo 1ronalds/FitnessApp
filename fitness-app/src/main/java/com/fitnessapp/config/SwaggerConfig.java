@@ -21,34 +21,14 @@ import java.time.LocalDateTime;
  @ConfigurationProperties("app.api")
  @ConditionalOnProperty(name="app.api.swagger.enable", havingValue = "true", matchIfMissing = false)
  public class SwaggerConfig {
-
-		 	private String version;
- 	private String title;
- 	private String description;
-	private String basePackage;
-	private String contactName;
-	private String contactEmail;
-
 			@Bean
 	public Docket api() {
 				return new Docket(DocumentationType.SWAGGER_2)
 					.select()
-					.apis(RequestHandlerSelectors.basePackage(basePackage))
+					.apis(RequestHandlerSelectors.basePackage("/src/main/controller"))
 					.paths(PathSelectors.any())
-				.build()
-					.directModelSubstitute(LocalDate.class, java.sql.Date.class)
-					.directModelSubstitute(LocalDateTime.class, java.util.Date.class)
-					.apiInfo(apiInfo());
-			}
+				.build();
 
-			private ApiInfo apiInfo() {
-				return new ApiInfoBuilder()
-					.title(title)
-					.description(description)
-					.version(version)
-					.contact(new Contact(contactName, null, contactEmail))
-					.build();
 			}
-
 
  }

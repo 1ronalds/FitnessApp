@@ -11,7 +11,7 @@ import lombok.NoArgsConstructor;
 @AllArgsConstructor
 public class ExerciseDto {
 	private long id;
-	private long categoryId;
+	private long categoryId = 0;
 	private String name;
 	private String description;
 	private String image;

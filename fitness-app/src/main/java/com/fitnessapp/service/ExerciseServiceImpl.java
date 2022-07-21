@@ -28,26 +28,26 @@ public class ExerciseServiceImpl implements ExerciseService {
 	@Override
 	public Exercise save(MultipartFile multipartFile, Long categoryId, String name, String description) throws IOException {
 		String fileName = StringUtils.cleanPath(multipartFile.getOriginalFilename());
-		String uploadDir = "src/main/resources/images/";
+		String uploadDir = "src/main/webapp/WEB-INF/images/";
 		FileUploadUtil.saveFile(uploadDir, fileName, multipartFile);
 		return exerciseRepository.save(Exercise.builder()
 				.name(name)
 				.description(description)
-				.image(uploadDir + fileName)
+				.image("/images/" + fileName)
 				.categoryId(categoryId).build());
 	}
 
 	@Override
 	public Exercise findById(Long id) {
 		Optional<Exercise> optionalExercise = exerciseRepository.findById(id);
-		if (optionalExercise.isEmpty())
+		if (!optionalExercise.isPresent())
 			throw new RecordNotFoundExceptionObject("Task not find by id : " + id);
 		return optionalExercise.get();
 	}
 
 	@Override
 	public void deleteById(Long id){
-		final var exist =exerciseRepository.existsById(id);
+		final boolean exist =exerciseRepository.existsById(id);
 		if (!exist) {
 			throw new RecordNotFoundExceptionObject("Task not find by id : " + id);
 		}

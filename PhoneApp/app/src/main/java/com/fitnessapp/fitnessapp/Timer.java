@@ -251,7 +251,7 @@ public class Timer extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
 
                 textView2 = ((TextView) adapterView.getChildAt(0));
-                if(theme.equals("dark"){
+                if(theme.equals("dark")){
                     textView2.setTextColor(Color.parseColor("#FFFFFF"));
                 } else {
                     textView2.setTextColor(Color.parseColor("#000000"));

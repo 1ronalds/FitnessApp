@@ -314,7 +314,11 @@ public class IntervalTimerActivity extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
                 String value = adapterView.getItemAtPosition(i).toString();
                 textView2 = ((TextView) adapterView.getChildAt(0));
-                textView2.setTextColor(Color.parseColor("#FFFFFF"));
+                if(theme.equals("dark"){
+                    textView2.setTextColor(Color.parseColor("#FFFFFF"));
+                } else {
+                    textView2.setTextColor(Color.parseColor("#000000"));
+                }
                 alarm = value;
                 int spinnerPosition = adapter.getPosition(alarm);
                 spin2.setSelection(spinnerPosition);

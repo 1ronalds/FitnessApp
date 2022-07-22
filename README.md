@@ -14,7 +14,7 @@ To create .apk app for phone open Build > Build bundle(s) APK(s) > Build APK(s).
 
 ## Server installation (on remote server)
 1) Set up a linux server and connect to it with ssh.
-2) Install MySQL server and java on it. (password for sql server should be 'serveraparole' and user 'root')
+2) Install MySQL server and java on it. (password for sql server should be '' and user 'root')
 3) On your machine download all code with git clone https://github.com/1ronalds/FitnessApp.git and then open /fitness-app
 4) Open terminal tab, go back to project directory and type mvnw package
 5) In /fitness-app/target folder there will be .jar file of all code, move it to server with scp command

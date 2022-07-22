@@ -22,3 +22,9 @@ To create .apk app for phone open Build > Build bundle(s) APK(s) > Build APK(s).
 7) Import sql file from github main page by following these instructions:
 https://www.digitalocean.com/community/tutorials/how-to-migrate-a-mysql-database-between-two-servers
 8) Edit android application's code to reflect new server
+
+
+##Exercises moderation
+1)Open http://172.104.252.91:8081/api/admin
+2)Delete exercises with delete button
+3)Create exercises with form. Image upload is mandatory.

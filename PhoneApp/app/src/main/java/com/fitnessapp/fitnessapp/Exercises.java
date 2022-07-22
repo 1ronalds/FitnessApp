@@ -235,6 +235,7 @@ public class Exercises extends AppCompatActivity {
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
 
                 textView2 = ((TextView) adapterView.getChildAt(0));
+                textView2.setTextColor(Color.parseColor("#FFFFFF"));
                 String value = adapterView.getItemAtPosition(i).toString();
                 alarm = value;
                 int spinnerPosition = adapter.getPosition(alarm);

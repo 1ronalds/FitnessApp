@@ -25,6 +25,6 @@ https://www.digitalocean.com/community/tutorials/how-to-migrate-a-mysql-database
 
 
 ## Exercises moderation
-1)Open http://172.104.252.91:8081/api/admin
-2)Delete exercises with delete button
-3)Create exercises with form. Image upload is mandatory.
+1) Open http://172.104.252.91:8081/api/admin
+2) Delete exercises with delete button
+3) Create exercises with form. Image upload is mandatory.
